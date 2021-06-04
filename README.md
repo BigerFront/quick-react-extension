@@ -13,4 +13,4 @@
   - [x] Integrated Redux react-redux
   - [x] Integrated React-router
   - [ ] localeStorage stream event listening
-  - [x] view module creator ![development docs]()
+  - [x] view module creator ![development docs](https://bigerfront.github.io/quick-react-extension)
