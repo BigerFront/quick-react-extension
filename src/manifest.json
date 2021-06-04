@@ -1,0 +1,26 @@
+{
+    "name": "Faster",
+    "manifest_version": 3,
+    "version": "0.0.1",
+    "options_page": "options.html",
+    "background": {
+        "service_worker": "background.bundle.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icons/faster-actived-128.png"
+    },
+    "icons": {
+        "128": "icons/faster-actived-128.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "content.styles.css",
+                "icons/*.png",
+                "*/*.js.map"
+            ],
+            "matches": []
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+/* Layout Style */
+@import './routes/setup-routes/setup-layout.scss';
+@import './routes/home-routes/home-layout.scss';
+
+@import './error/error.scss';
+@import './home-banner/home-banner.scss';
+@import './home/home.scss';
+@import './first-setup/index.scss';
+@import './unlock/unlock-pagge.scss';
+
+/* Popup Global CSS will override sub modules Style */
+
+/* extension antd css */
+
+.ant-divider-horizontal.brave-divider {
+  margin: 4px 0;
+}
