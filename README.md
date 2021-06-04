@@ -7,5 +7,10 @@
 > yarn 1.19+
 > webpack-cli 4.7+
 
-### 
+### Functions
 
+  - [x] Integrated Webpack 5 + less + scss
+  - [x] Integrated Redux react-redux
+  - [x] Integrated React-router
+  - [ ] localeStorage stream event listening
+  - [x] view module creator ![development docs]()
