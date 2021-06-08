@@ -14,27 +14,13 @@ export const lockBraveTroops = async () => (dispatch) => {
   };
 };
 
-export const tryUnlockBraveTroops = async (password) => {
-  return (dispatch) => {
-    // TODO show Indication
-    dispatch(unlockInProgress());
-
-    return new Promise((resovle, reject) => {
-      setTimeout(() => {
-        if (password === '123') {
-          resovle(true);
-        } else {
-          reject('password incorret.');
-        }
-      }, 5000);
-    })
-      .then((res) => {
-        dispatch(unlockSuccessed());
-      })
-      .catch((message) => {
-        dispatch(unlockFailed(message));
-      });
-  };
+export const tryUnlockBraveTroops = (password) => (dispatch) => {
+  
+  if (password === '1234') {
+    dispatch(unlockSuccessed());
+  } else {
+    dispatch(unlockFailed('Pwd Incorrect'));
+  }
 };
 
 export function unlockInProgress() {

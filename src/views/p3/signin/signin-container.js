@@ -1,11 +1,14 @@
-import { compose } from 'redux';import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import SigninComponent from './signin-comp.jsx';
 
+import { tryUnlockBraveTroops } from '~Store/actions/brave-action';
+
 /**
  *
- * @module: signin 
+ * @module: signin
  * @Created: lanbery 21-06-07 12:49 Monday
  * make state inject into react dom props
  *
@@ -20,10 +23,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // doSomeThing:(arg1,arg2) => (dispatch) => {
-    //   ...
-    //   dispatch(action);
-    // },
+    tryUnlockBrave: (password) => dispatch(tryUnlockBraveTroops(password)),
   };
 };
 

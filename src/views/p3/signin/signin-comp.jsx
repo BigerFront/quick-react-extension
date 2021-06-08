@@ -2,12 +2,49 @@ import React, { Component } from 'react';
 
 import { Form, Input, Layout, Button } from 'antd';
 
+import { LockOutlined } from '@ant-design/icons';
+
+import { pwdWeakRule } from '~Lib/valid-rules';
+import logger from '~Lib/log';
+
 const { Content, Footer } = Layout;
 
-export default class SigninComponent extends Component {
-  state = {};
+const formLayout = {
+  labelCol: {
+    span: 0,
+  },
+  wrapperCol: {
+    span: 24,
+  },
+};
 
-  static FormOpts = {};
+export default class SigninComponent extends Component {
+  state = {
+    submitDisabled: true,
+  };
+
+  componentDidMount() {
+    // this.formRef = React.createRef();
+  }
+
+  onFinish = (values) => {
+    const { password } = values;
+    const { tryUnlockBrave } = this.props;
+    logger.debug('Onfish>>>>>', password, tryUnlockBrave);
+
+    try {
+      const res = tryUnlockBrave(password);
+      logger.debug('res>>>>', res);
+    } catch (error) {
+      logger.error(error);
+    }
+  };
+
+  onValuesChange = (changedValues) => {
+    const { password } = changedValues;
+    let valid = pwdWeakRule.pattern.test(password);
+    this.setState({ submitDisabled: !valid });
+  };
 
   renderHeader() {
     return <div className="signin-container__header"></div>;
@@ -15,18 +52,39 @@ export default class SigninComponent extends Component {
 
   renderForm() {
     return (
-      <Form name="signinForm">
+      <Form
+        {...formLayout}
+        ref={this.formRef}
+        name="signinForm"
+        onFinish={this.onFinish}
+        onValuesChange={this.onValuesChange}
+      >
         <Form.Item
           name="password"
-          rules={[{ required: true, message: 'Please input your password' }]}
+          rules={[
+            { required: true, message: 'Please input your password' },
+            pwdWeakRule,
+          ]}
         >
-          <Input.Password bordered={false} className="signin-pwd-input" />
+          <Input.Password
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            bordered={false}
+            className="signin-pwd-input"
+          />
         </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" shape="round" block>
-            Unlock
-          </Button>
+        <Form.Item {...formLayout} shouldUpdate>
+          {() => (
+            <Button
+              type="primary"
+              shape="round"
+              block
+              htmlType="submit"
+              disabled={this.state.submitDisabled}
+            >
+              Unlock
+            </Button>
+          )}
         </Form.Item>
       </Form>
     );
@@ -47,6 +105,7 @@ export default class SigninComponent extends Component {
       <Layout className="signin-container">
         {this.renderHeader()}
         <Content className="signin-container__main">
+          {/* <UnlockForm /> */}
           {this.renderForm()}
         </Content>
         <Footer className="signin-container__footer">

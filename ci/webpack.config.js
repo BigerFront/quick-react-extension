@@ -11,6 +11,8 @@ const warpperEnv = require('../config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const NullWebpackPlugin = require('./null-webpack-plugin');
 
+const definePlugins = require('./eject-env-plugins');
+
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 const targetBrowser = warpperEnv.TARGET_BROWSER || 'chrome';
 
@@ -160,9 +162,7 @@ var options = {
       ]),
   },
   plugins: [
-    new webpack.DefinePlugin({
-      __DEBUG__: JSON.stringify(DEV_DEBUG),
-    }),
+    ...definePlugins,
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin({
       verbose: true,
