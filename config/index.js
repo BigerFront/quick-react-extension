@@ -39,7 +39,7 @@ if (fs.existsSync(localeEnvPath)) {
 let SECRETS_ENV_PATH = path.resolve(
   __dirname,
   '../../',
-  '.localenv/crxextension'
+  '.localenv/cfg-extensions'
 );
 let secretsEnv = {};
 if (fs.existsSync(path.join(SECRETS_ENV_PATH, '/secrets.env.js'))) {
@@ -60,7 +60,6 @@ const mixinProperty = (key, defaultValue = '') => {
 };
 
 let envWarpper = Object.assign({}, secretsEnv, localeEnv, {
-  ...localeEnv,
   APP_NAME: mixinProperty('APP_NAME', pkgJson.name),
   APP_VERSION: mixinProperty('APP_VERSION', pkgJson.version),
   APP_AUHTOR: mixinProperty('APP_AUTHOR', pkgJson.author),

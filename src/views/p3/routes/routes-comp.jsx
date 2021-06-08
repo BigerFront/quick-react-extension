@@ -10,8 +10,9 @@ export default class RoutesComp extends PureComponent {
   renderRoutes() {
     const routes = (
       <Switch>
-        <Route exact path={DEFAULT_ROUTE} component={HomeLayout} />
-        <Route path={SETUP_ROUTE} component={SetupLayout} exact />
+        <Route path={DEFAULT_ROUTE} component={HomeLayout} />
+
+        <Route path={SETUP_ROUTE} component={SetupLayout} />
       </Switch>
     );
 

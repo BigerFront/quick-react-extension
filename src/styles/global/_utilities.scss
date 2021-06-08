@@ -1,3 +1,7 @@
+@function calc-precent($arg, $total) {
+  @return $arg/$total * 100%;
+}
+
 .text-muted {
   color: $text-secondary;
 }
