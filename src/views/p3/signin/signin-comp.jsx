@@ -27,13 +27,13 @@ export default class SigninComponent extends Component {
     // this.formRef = React.createRef();
   }
 
-  onFinish = (values) => {
+  onFinish = async (values) => {
     const { password } = values;
     const { tryUnlockBrave } = this.props;
     logger.debug('Onfish>>>>>', password, tryUnlockBrave);
 
     try {
-      const res = tryUnlockBrave(password);
+      const res = await tryUnlockBrave(password);
       logger.debug('res>>>>', res);
     } catch (error) {
       logger.error(error);

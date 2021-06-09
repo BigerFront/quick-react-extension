@@ -10,6 +10,9 @@ import {
   DogeIcon,
   NetworkIcon,
   ExchageIcon,
+  SafetyIcon,
+  IncreaseIcon,
+  MailIcon,
 } from '~Widgets/svgicons';
 
 import HomeToolbar from '../toolbar';
@@ -17,7 +20,8 @@ import HomeToolbar from '../toolbar';
 import { compressAddress } from '~/helpers/text-utils';
 
 import logoSrc from '~Assets/images/brave-blue.png';
-import redLogoSrc from '~Assets/images/brave-troops.png';
+import unlockSrc from '~Assets/images/brave-troops.png';
+import lockSrc from '~Assets/images/brave-gloden-big.png';
 
 export default class HomeBanner extends PureComponent {
   state = {
@@ -43,14 +47,14 @@ export default class HomeBanner extends PureComponent {
   }
 
   renderLogoContainer() {
-    const { theme } = this.props;
+    const { isUnlocked } = this.props;
     return (
       <div className="home-banner__logo--container-wrapper">
         <div className="left-fill"></div>
         <div className="home-banner__logo">
           <Avatar
             className="brave-avatar"
-            src={theme === 'blue' ? logoSrc : redLogoSrc}
+            src={isUnlocked ? unlockSrc : lockSrc}
             size={80}
             gap={10}
           />
@@ -67,6 +71,11 @@ export default class HomeBanner extends PureComponent {
     return (
       <div className="home-banner__slogan">
         <h4>{this.slogan}</h4>
+        <div className="home-banner__slogan--iconbox">
+          <IncreaseIcon />
+          <SafetyIcon />
+          <MailIcon />
+        </div>
       </div>
     );
   }

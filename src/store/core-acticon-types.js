@@ -10,7 +10,7 @@ export const LOCK_BRAVE_TROOPS = 'brave/locked';
 export const UNLOCK_BRAVE_TROOPS = 'brave/unlock';
 
 export const UNLOCK_IN_PROGRESS = 'brave/unlock_in_progress';
-export const UNLOCK_FAILED = 'brave/unlock_failed';
+export const UNLOCK_FAILED = 'skin@unlock_failed';
 export const UNLOCK_SUCCESS = 'brave/unlock_success';
 
 /** INIT */

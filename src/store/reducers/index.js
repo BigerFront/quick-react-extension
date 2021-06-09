@@ -4,7 +4,6 @@ import { connectRouter } from 'connected-react-router';
 
 import braveReducer from './brave';
 import skinStateReducer from './skin';
-import appStateReducer from './app';
 import localeMessagesReducer from './locale';
 import taskReducer from './task';
 
@@ -13,7 +12,7 @@ const createRootReducer = (history) =>
     router: connectRouter(history),
     braveState: braveReducer,
     skinState: skinStateReducer,
-    appState: appStateReducer,
+
     taskState: taskReducer,
     localeMessages: localeMessagesReducer,
   });

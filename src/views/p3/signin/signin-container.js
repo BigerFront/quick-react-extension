@@ -4,7 +4,10 @@ import { withRouter } from 'react-router-dom';
 
 import SigninComponent from './signin-comp.jsx';
 
-import { tryUnlockBraveTroops } from '~Store/actions/brave-action';
+import {
+  tryUnlockBraveTroops,
+  unlockByPass,
+} from '~Store/actions/brave-action';
 
 /**
  *
@@ -14,16 +17,18 @@ import { tryUnlockBraveTroops } from '~Store/actions/brave-action';
  *
  */
 const mapStateToProps = (state) => {
-  const { braveState } = state; // global state contains braveState,skinState ... ed.
+  const {
+    braveState: { isUnlocked },
+  } = state; // global state contains braveState,skinState ... ed.
 
   return {
-    ...braveState,
+    isUnlocked,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    tryUnlockBrave: (password) => dispatch(tryUnlockBraveTroops(password)),
+    tryUnlockBrave: (password) => dispatch(unlockByPass(password)),
   };
 };
 

@@ -2,6 +2,7 @@ import {
   UI_SET_DEMOTITLE,
   UI_OPEN_SIDEBAR,
   UI_CLOSE_SIDEBAR,
+  UNLOCK_FAILED,
 } from '../../core-acticon-types';
 
 export default function reduceSkin(state = {}, { type, payload = {} }) {
@@ -14,10 +15,10 @@ export default function reduceSkin(state = {}, { type, payload = {} }) {
   };
 
   switch (type) {
-    case UI_SET_DEMOTITLE:
+    case UNLOCK_FAILED:
       return {
         ...skinState,
-        demoTitle: payload.demoTitle,
+        warning: payload.message || 'Incorrect password.Try again.',
       };
 
     case UI_OPEN_SIDEBAR:

@@ -1,7 +1,7 @@
 const initialAppState = {
-  // braveState:{}, // ui temp state
+  braveState: {}, // app storage sync ui state
   skinState: {}, // ui ctrl state,Do not participate in logical calculations
-  appState: {}, // core state
+  // skinState: {}, // core state
   localeMessages: {}, // i18n state
   taskState: {
     tasks: [
