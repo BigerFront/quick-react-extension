@@ -5,12 +5,18 @@ import { MoreOutlined, SettingOutlined, HomeOutlined } from '@ant-design/icons';
 
 import logger from '~Lib/log';
 
-import { ContactIcon, AssetsIcon, TransactionIcon } from '~Widgets/svgicons';
+import {
+  ContactIcon,
+  AssetsIcon,
+  TransactionIcon,
+  SolidityIcon,
+} from '~Widgets/svgicons';
 import {
   DEFAULT_ROUTE,
   CONTACTS_ROOT_NESTED,
   ASSETS_ROOT_NESTED,
   TRANSACTION_ROOT_NESTED,
+  SMART_CONTRACTS_ROOT_NESTED,
 } from '~P3/routes/routes-consts';
 
 export default class MenuComponent extends Component {
@@ -33,6 +39,7 @@ export default class MenuComponent extends Component {
       case CONTACTS_ROOT_NESTED:
       case ASSETS_ROOT_NESTED:
       case TRANSACTION_ROOT_NESTED:
+      case SMART_CONTRACTS_ROOT_NESTED:
         this.defaultSelectedKeys = [pathname];
 
         break;
@@ -118,6 +125,14 @@ export default class MenuComponent extends Component {
             icon={<TransactionIcon spin />}
           >
             Transactions
+          </Menu.Item>
+          <Menu.Divider style={{ margin: '2px 4px' }} />
+          <Menu.Item
+            key={SMART_CONTRACTS_ROOT_NESTED}
+            className="brave-dropdown--item"
+            icon={<SolidityIcon spin />}
+          >
+            Smart Contracts
           </Menu.Item>
         </Menu>
       </>

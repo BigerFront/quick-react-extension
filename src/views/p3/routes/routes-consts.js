@@ -32,6 +32,11 @@ export const INIT_IMPORT_WITH_SEED_ROUTE = '/init/create-pass/import-seed';
 
 /** Brave Routes */
 
+/** contacts */
+export const CONTACTS_ROOT_ROUTE = '/p/contacts'; // default_route
+
+export const CONTACTS_ROOT_NESTED = '/contacts';
+
 /** Digital Assets */
 export const DIGITAL_ROOT_ROUTE = '/digital';
 
@@ -45,7 +50,5 @@ export const DIGITAL_ASSETS_VIEW_ROUTE = `${DIGITAL_ROOT_ROUTE}/assets/view/:{id
 export const TRANSACTION_ROOT_ROUTE = '/p/transactions';
 export const TRANSACTION_ROOT_NESTED = '/transactions';
 
-/** contacts */
-export const CONTACTS_ROOT_ROUTE = '/p/contacts'; // default_route
-
-export const CONTACTS_ROOT_NESTED = '/contacts';
+/**Smart contracts */
+export const SMART_CONTRACTS_ROOT_NESTED = '/smart';

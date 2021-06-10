@@ -1,0 +1,12 @@
+/**
+ * This file is used to define the ContractPage style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './smart-contract/smart.scss';
+*/
+.smart-page {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}

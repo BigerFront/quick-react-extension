@@ -7,12 +7,12 @@ import logger from '~Lib/log';
 import { comboNestedRoutes } from '~Lib/utils/route-helper';
 
 import HomeBanner from '~P3/home/banner';
-import HomeToolbar from '../toolbar';
 import HomeFootToolbar from '~P3/footer/comm-toolbar';
 
 import ContactList from '~P3/contacts/index';
 import DigitalAssetList from '~P3/digital-assets/list';
 import TransactionsList from '~P3/transactions';
+import SmartContractList from '~P3/contracts/smart-contract';
 import SigninComponent from '~P3/signin';
 
 import Error404 from '~P3/error/not-found';
@@ -20,11 +20,11 @@ import Error404 from '~P3/error/not-found';
 import AuthRoute from '~P3/auth';
 
 import {
-  HOME_ROUTE,
+  SIGNIN_NESTED,
   CONTACTS_ROOT_NESTED,
   ASSETS_ROOT_NESTED,
   TRANSACTION_ROOT_NESTED,
-  SIGNIN_NESTED,
+  SMART_CONTRACTS_ROOT_NESTED,
 } from '../../routes/routes-consts';
 
 const { Content, Footer } = Layout;
@@ -76,6 +76,10 @@ export default class HomeLayout extends PureComponent {
         <AuthRoute
           path={comboNestedRoutes(path, TRANSACTION_ROOT_NESTED)}
           component={TransactionsList}
+        />
+        <Route
+          path={comboNestedRoutes(path, SMART_CONTRACTS_ROOT_NESTED)}
+          component={SmartContractList}
         />
         <Route
           path={comboNestedRoutes(path, SIGNIN_NESTED)}

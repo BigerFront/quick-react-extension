@@ -708,3 +708,109 @@ export const TransactionIcon = (props) => {
   const newClassName = spin ? `${className} brave-spin` : className;
   return <Icon component={transSvg} {...props} className={newClassName} />;
 };
+
+const soliditySvg = (props) => (
+  <svg
+    t="1623343496887"
+    className={props.spin ? 'brave-icon brave-spin' : 'brave-icon'}
+    viewBox="0 0 1024 1024"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    p-id="22540"
+    data-spm-anchor-id="a313x.7781069.0.i2"
+    width="1em"
+    height="1em"
+  >
+    <path
+      d="M366.103862 1024L172.143808 691.472703h408.884155L392.69241 1024h-26.588548z m-134.135819-297.587217L379.568575 975.595206l141.805593-249.352862H231.968043z"
+      fill="#f4ea2a"
+      p-id="22541"
+      data-spm-anchor-id="a313x.7781069.0.i0"
+      className="selected"
+    ></path>
+    <path
+      d="M729.310253 1023.659121l-357.070573 0.340879-9.885486-17.55526 4.942743-8.69241 174.52996-306.961385 50.961385 17.725699 143.339548 254.806925-6.817577 60.335552z m-317.18775-34.599201l292.474035-0.340879-142.48735-262.988016-149.986685 263.328895z"
+      fill="currentColor"
+      p-id="22542"
+    ></path>
+    <path
+      d="M729.310253 1023.829561l-186.801598-332.356858h373.773635l-186.972037 332.356858z m-127.147803-297.416778l127.147803 226.173102 127.147803-226.173102H602.16245z"
+      fill="#f4ea2a"
+      p-id="22543"
+      data-spm-anchor-id="a313x.7781069.0.i3"
+      className="selected"
+    ></path>
+    <path
+      d="M870.604527 726.071904H578.81225l-36.985353-35.280959 184.585886-308.665779 189.528628 310.199734-45.336884 33.747004z m-288.894807-34.94008h290.599201l-145.896138-237.933422-144.703063 237.933422z"
+      fill="currentColor"
+      p-id="22544"
+      data-spm-anchor-id="a313x.7781069.0.i1"
+    ></path>
+    <path
+      d="M727.26498 0l193.619174 332.527297H512L700.505992 0h26.758988z m133.96538 297.587217L713.629827 48.404794l-141.464714 249.352862h289.065247z"
+      fill="#f4ea2a"
+      p-id="22545"
+      data-spm-anchor-id="a313x.7781069.0.i4"
+      className="selected"
+    ></path>
+    <path
+      d="M363.888149 0.511318l357.070573-0.340879 9.885486 17.55526-4.942743 8.69241-174.52996 307.131824-50.961385-17.725699-143.339547-254.977363 6.817576-60.335553zM680.905459 34.94008L388.601864 35.451398l142.48735 262.988016L680.905459 34.94008z"
+      fill="currentColor"
+      p-id="22546"
+    ></path>
+    <path
+      d="M551.030626 332.527297H176.916112L363.71771 0.170439l187.312916 332.356858z m-314.29028-34.94008h254.466045L363.888149 71.414115l-127.147803 226.173102z"
+      fill="#f4ea2a"
+      p-id="22547"
+      data-spm-anchor-id="a313x.7781069.0.i5"
+      className="selected"
+    ></path>
+    <path
+      d="M222.593875 297.928096h291.792277l36.985353 35.280959-184.585886 309.006657-189.358189-310.199733 45.166445-34.087883z m288.894807 34.94008H220.889481l145.896138 237.933422 144.703063-237.933422z"
+      fill="currentColor"
+      p-id="22548"
+    ></path>
+  </svg>
+);
+
+const solidityFillSvg = (props) => (
+  <svg
+    t="1623343924813"
+    className={props.spin ? 'brave-icon brave-spin' : 'brave-icon'}
+    viewBox="0 0 1024 1024"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    p-id="22714"
+    width="1em"
+    height="1em"
+  >
+    <path
+      d="M655.264 64l-144 256h-288l144-256h288M368.64 960l144-256h288l-144 256h-288"
+      fill="currentColor"
+      opacity=".25"
+      p-id="22715"
+    ></path>
+    <path
+      d="M511.2 320h288l-144-256h-288zM512.704 704h-288l144 256h288z"
+      fill="currentColor"
+      opacity=".6"
+      p-id="22716"
+    ></path>
+    <path
+      d="M367.264 576l144-256-144-256-144 256zM656.64 448l-144 256 144 256 144-256z"
+      fill="currentColor"
+      opacity=".8"
+      p-id="22717"
+      data-spm-anchor-id="a313x.7781069.0.i9"
+      className="selected"
+    ></path>
+  </svg>
+);
+
+export const SolidityIcon = (props) => {
+  const { className, spin } = props;
+  const newClassName = spin ? `${className} brave-spin` : className;
+  return (
+    <Icon component={solidityFillSvg} {...props} className={newClassName} />
+  );
+};
