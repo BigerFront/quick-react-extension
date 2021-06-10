@@ -48,3 +48,6 @@ $font-size-paragraph: map-get($typography-variants, 'paragraph');
 $font-size-h7: map-get($typography-variants, 'h7');
 $font-size-h8: map-get($typography-variants, 'h8');
 $font-size-h9: map-get($typography-variants, 'h9');
+
+/* Layout Variables */
+$brave-layout-foot-padding: 0px 2px 0px 4px;

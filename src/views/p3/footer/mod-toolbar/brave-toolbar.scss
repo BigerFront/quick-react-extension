@@ -1,0 +1,12 @@
+/**
+ * This file is used to define the ToolbarComponent style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './mod-toolbar/brave-toolbar.scss';
+*/
+.brave-toolbar-container {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+  }
+}

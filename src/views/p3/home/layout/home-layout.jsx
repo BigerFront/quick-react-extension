@@ -8,6 +8,7 @@ import { comboNestedRoutes } from '~Lib/utils/route-helper';
 
 import HomeBanner from '~P3/home/banner';
 import HomeToolbar from '../toolbar';
+import HomeFootToolbar from '~P3/footer/comm-toolbar';
 
 import ContactList from '~P3/contacts/index';
 import DigitalAssetList from '~P3/digital-assets/list';
@@ -61,7 +62,6 @@ export default class HomeLayout extends PureComponent {
     const { match } = this.props;
 
     const { path } = match;
-    logger.debug('>>>>>>>>>>>>>>&&&&&&&&&&&&&&&>>>>', path);
 
     return (
       <Switch>
@@ -97,7 +97,7 @@ export default class HomeLayout extends PureComponent {
         <Divider className="brave-divider" />
         <Content className="home-layout__main">{this.renderRoutes()}</Content>
         <Footer className="home-layout__footer">
-          {isUnlocked ? <HomeToolbar /> : null}
+          {isUnlocked ? <HomeFootToolbar /> : null}
         </Footer>
       </Layout>
     );

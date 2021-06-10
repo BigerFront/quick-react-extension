@@ -43,7 +43,7 @@ export default class SigninComponent extends Component {
     try {
       const res = await tryUnlockBrave(password);
       logger.debug('res>>>>', res);
-      history.push(DEFAULT_ROUTE);
+      history.replace(DEFAULT_ROUTE);
     } catch (error) {
       logger.error(error);
     }

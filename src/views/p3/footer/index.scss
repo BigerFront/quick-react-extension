@@ -1,0 +1,144 @@
+/**
+ *
+ */
+$brave-dropdown-bg-color: rgba(0, 0, 0, 1);
+$brave-dropdown-color: #ffffff;
+$brave-foot-bg-color: rgba(240, 242, 245, 1);
+
+$brave-foot-logo-size: 40px;
+
+.brave-foot {
+  &__status {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  &-btn--group {
+    button.ant-btn:hover {
+      color: $brave-banner-second-color;
+    }
+  }
+}
+
+.brave-dropdown {
+  color: $brave-dropdown-color;
+  background: $brave-dropdown-bg-color;
+  box-shadow: rgb(0 0 0 / 15%) 0 1px 2px 2px;
+
+  &__header {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    flex-flow: row nowrap;
+    padding: 4px 6px;
+
+    button {
+      color: $brave-dropdown-color;
+      border-radius: 4px;
+    }
+  }
+
+  &__list {
+    background: rgba($brave-dropdown-color, 0.05);
+    color: $brave-dropdown-color;
+    border-right: 0;
+  }
+
+  &--item {
+    min-width: 225px;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    span {
+      font-size: 1rem;
+    }
+    .anticon[role='img']:not(.ant-menu-item-selected) {
+      font-size: 1rem;
+      color: $brave-dropdown-color;
+    }
+  }
+
+  &--item:hover {
+    background-color: rgba($white, 0.08);
+    .brave-icon {
+      color: rgba($primary-color, 1);
+      font-size: 1.05rem;
+      transform: rotate(45deg);
+    }
+
+    .brave-spin {
+      .brave-icon {
+        -webkit-animation: brave-rotate 800ms infinite linear;
+        -moz-animation: brave-rotate 800ms infinite linear;
+        -o-animation: brave-rotate 800ms infinite linear;
+        animation: brave-rotate 800ms infinite linear;
+      }
+    }
+  }
+}
+
+.ant-menu:not(.ant-menu-horizontal) {
+  > .brave-dropdown--item {
+    &.ant-menu-item-selected {
+      background-color: rgba($white, 0.15);
+
+      .brave-icon {
+        color: rgba($primary-color, 1);
+        font-size: 1.2rem;
+        transform: rotate(45deg);
+      }
+    }
+
+    &.ant-menu-item-selected {
+      .brave-spin {
+        .brave-icon {
+          -webkit-animation: brave-rotate 800ms infinite linear;
+          -moz-animation: brave-rotate 800ms infinite linear;
+          -o-animation: brave-rotate 800ms infinite linear;
+          animation: brave-rotate 800ms infinite linear;
+        }
+      }
+    }
+  }
+}
+
+@import './comm-toolbar/comm-toolbar.scss';
+@import './mod-toolbar/brave-toolbar.scss';
+
+@import './toggle-menu/brave-menu.scss';
+
+@-webkit-keyframes brave-rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes brave-rotate {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-o-keyframes brave-rotate {
+  from {
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(360deg);
+  }
+}
+@keyframes brave-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

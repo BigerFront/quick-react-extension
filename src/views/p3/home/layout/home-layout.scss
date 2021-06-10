@@ -8,6 +8,13 @@
   }
 
   &__footer {
-    padding: 0px;
+    width: 100%;
+    background: rgba($brave-banner-background, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;
+    padding: $brave-layout-foot-padding;
+    margin: 0;
   }
 }
