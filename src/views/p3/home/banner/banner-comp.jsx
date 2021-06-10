@@ -2,8 +2,6 @@ import React, { PureComponent } from 'react';
 
 import { Avatar } from 'antd';
 
-import { SettingOutlined, LockOutlined } from '@ant-design/icons';
-
 import {
   EthIcon,
   BtcIcon,
@@ -15,7 +13,7 @@ import {
   MailIcon,
 } from '~Widgets/svgicons';
 
-import HomeToolbar from '../toolbar';
+
 
 import { compressAddress } from '~/helpers/text-utils';
 
@@ -143,7 +141,7 @@ export default class HomeBanner extends PureComponent {
         <div className="home-banner__assets--container">
           {isUnlocked ? this.renderAssetsContainer() : null}
         </div>
-        {isUnlocked ? <HomeToolbar /> : null}
+       
       </>
     );
   }

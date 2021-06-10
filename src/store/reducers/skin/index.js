@@ -1,5 +1,5 @@
 import {
-  UI_SET_DEMOTITLE,
+  UPD_BRAVE_BLOCKED,
   UI_OPEN_SIDEBAR,
   UI_CLOSE_SIDEBAR,
   UNLOCK_FAILED,
@@ -7,6 +7,7 @@ import {
 
 export default function reduceSkin(state = {}, { type, payload = {} }) {
   const skinState = {
+    uiBlocked: false,
     sidebar: {
       isOpen: false,
     },
@@ -15,6 +16,14 @@ export default function reduceSkin(state = {}, { type, payload = {} }) {
   };
 
   switch (type) {
+    case UPD_BRAVE_BLOCKED: {
+      const { uiBlocked } = payload;
+      return {
+        ...skinState,
+        uiBlocked: Boolean(uiBlocked),
+      };
+    }
+
     case UNLOCK_FAILED:
       return {
         ...skinState,

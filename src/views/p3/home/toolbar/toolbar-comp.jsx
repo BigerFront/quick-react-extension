@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 import { Menu, Dropdown, Button } from 'antd';
 
+import logger from '~Lib/log';
+
 import {
   SettingOutlined,
   LockOutlined,
@@ -11,29 +13,28 @@ import {
 } from '@ant-design/icons';
 
 import {
-  SIGNIN_ROUTE,
-  DIGITAL_ASSETS_ROOT_ROUTE,
-  TRANSACTION_ROOT_ROUTE,
-  CONTACTS_ROOT_ROUTE,
+  CONTACTS_ROOT_NESTED,
+  ASSETS_ROOT_NESTED,
+  TRANSACTION_ROOT_NESTED,
 } from '~P3/routes/routes-consts';
 
 export default class ToolbarComponent extends Component {
   tabLabelMap = {
-    [DIGITAL_ASSETS_ROOT_ROUTE]: {
+    [CONTACTS_ROOT_NESTED]: {
+      name: 'Contacts',
+    },
+    [ASSETS_ROOT_NESTED]: {
       name: 'Digital Assets',
     },
-    [TRANSACTION_ROOT_ROUTE]: {
+    [TRANSACTION_ROOT_NESTED]: {
       name: 'Transaction',
-    },
-    [CONTACTS_ROOT_ROUTE]: {
-      name: 'Contacts',
     },
   };
 
   state = {
-    currentLabel: this.tabLabelMap[CONTACTS_ROOT_ROUTE].name,
+    currentLabel: this.tabLabelMap[CONTACTS_ROOT_NESTED].name,
     size: 'small',
-    currentPath: CONTACTS_ROOT_ROUTE,
+    currentPath: CONTACTS_ROOT_NESTED,
   };
 
   onDropLabelHandler = ({ key }) => {
@@ -50,8 +51,12 @@ export default class ToolbarComponent extends Component {
   };
 
   lockedHandler = () => {
-    const { history } = this.props;
-    history.push(SIGNIN_ROUTE);
+    const { lockBravTroops } = this.props;
+
+    lockBravTroops().then(() => {
+      logger.debug('>>>>>>> Locked success>>>>>');
+    });
+    // history.push(SIGNIN_ROUTE);
   };
 
   renderTabLabelContainer() {

@@ -1,0 +1,12 @@
+/**
+ * This file is used to define the ToolbarComponent style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './comm-toolbar/comm-toolbar.scss';
+*/
+.comm-toolbar-container {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+  }
+}

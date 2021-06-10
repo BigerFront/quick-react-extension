@@ -4,10 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import SigninComponent from './signin-comp.jsx';
 
-import {
-  tryUnlockBraveTroops,
-  unlockByPass,
-} from '~Store/actions/brave-action';
+import { unlockByPass, autoUnlocked } from '~Store/actions/brave-action';
 
 /**
  *

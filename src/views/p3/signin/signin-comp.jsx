@@ -6,6 +6,7 @@ import { LockOutlined } from '@ant-design/icons';
 
 import { pwdWeakRule } from '~Lib/valid-rules';
 import logger from '~Lib/log';
+import { DEFAULT_ROUTE } from '../routes/routes-consts';
 
 const { Content, Footer } = Layout;
 
@@ -23,18 +24,26 @@ export default class SigninComponent extends Component {
     submitDisabled: true,
   };
 
+  UNSAFE_componentWillMount() {
+    const { isUnlocked, history } = this.props;
+    if (isUnlocked) {
+      history.push(DEFAULT_ROUTE);
+    }
+  }
+
   componentDidMount() {
     // this.formRef = React.createRef();
   }
 
   onFinish = async (values) => {
     const { password } = values;
-    const { tryUnlockBrave } = this.props;
-    logger.debug('Onfish>>>>>', password, tryUnlockBrave);
+    const { tryUnlockBrave, history } = this.props;
+    // logger.debug('Onfish>>>>>', password, tryUnlockBrave, history);
 
     try {
       const res = await tryUnlockBrave(password);
       logger.debug('res>>>>', res);
+      history.push(DEFAULT_ROUTE);
     } catch (error) {
       logger.error(error);
     }

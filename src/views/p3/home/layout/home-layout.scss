@@ -1,0 +1,13 @@
+.home-layout {
+  &__banner--wrapper {
+    width: 100%;
+  }
+
+  &__main {
+    background-color: $brave-bg-white;
+  }
+
+  &__footer {
+    padding: 0px;
+  }
+}

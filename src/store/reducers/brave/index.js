@@ -1,4 +1,6 @@
 import {
+  SET_BRAVE_LOCKED,
+  UNLOCK_SUCCESS,
   UPD_BRAVE_STATE,
   SETUP_COMPLETED,
   SET_BRAVE_ACC_ENABLE,
@@ -27,7 +29,16 @@ export default function reduceBraveTroops(state = {}, { type, payload = {} }) {
         ...braveState,
         completedOfSetup: true,
       };
-
+    case SET_BRAVE_LOCKED:
+      return {
+        ...braveState,
+        isUnlocked: false,
+      };
+    case UNLOCK_SUCCESS:
+      return {
+        ...braveState,
+        isUnlocked: true,
+      };
     case SET_BRAVE_ACC_ENABLE:
       return {
         ...braveState,

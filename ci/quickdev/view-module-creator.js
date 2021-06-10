@@ -34,11 +34,11 @@ async function main() {
   );
 
   const subEntryBase = process.env.SUB_ENTRY || Config.SUB_ENTRY;
-  const { modName, modPath } = Config;
+  const { modName, modPath, corename } = Config;
 
   const baseViewPath = R(src, Config.VIEW_BASE, subEntryBase);
 
-  const params = modNameParser(modName, subEntryBase);
+  const params = modNameParser(modName, subEntryBase, corename);
 
   const viewModPath = checkedViewMod(baseViewPath, modPath, params);
 
@@ -106,14 +106,19 @@ function checkedViewMod(baseView, modName, params) {
   return viewModPath;
 }
 
-function modNameParser(modName, subEntryBase) {
+function modNameParser(modName, subEntryBase, corename) {
   // modName : a-b
   const mns = modName.split(/\-/);
   let coreName = mns.length > 1 ? mns[1] : mns[0];
 
   const notPage = Config.notPage;
 
+  const corenameSeted = Boolean(corename);
+
+  const rootClzPrefix = corenameSeted ? corename : coreName;
+
   const _params = {
+    corename,
     modName,
     subEntryBase,
     view: {
@@ -121,8 +126,12 @@ function modNameParser(modName, subEntryBase) {
       compName: `${capitalize(coreName)}${notPage ? 'Component' : 'Page'}`, //
       compFileName: `${coreName}-comp.jsx`, //
       containerFileName: `${coreName}-container.js`,
-      scssFileName: `${mns.filter((n, i) => i < 2).join('-')}.scss`,
-      rootClassName: notPage ? `${coreName}-container` : `${coreName}-page`,
+      scssFileName: corenameSeted
+        ? `${corename}.scss`
+        : `${mns.filter((n, i) => i < 2).join('-')}.scss`,
+      rootClassName: notPage
+        ? `${rootClzPrefix}-container`
+        : `${rootClzPrefix}-page`,
     },
   };
 

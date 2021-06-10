@@ -2,28 +2,26 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import ToolbarComponent from './toolbar-comp.jsx';
+import LayoutPage from './layout-comp.jsx';
 
-import { lockBraveTroops } from '~Store/actions/brave-action';
 /**
  *
- * @module: home-toolbar
- * @Created: lanbery 21-06-07 09:49 Monday
+ * @module: main-layout
+ * @Created: lanbery 21-06-09 15:19 Wednesday
  * make state inject into react dom props
  *
  */
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   const { braveState } = state; // global state contains braveState,skinState ... ed.
 
-  const { isUnlocked } = braveState;
+  console.log('**********************>>>>', ownProps);
   return {
-    isUnlocked,
+    ...braveState,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    lockBravTroops: () => dispatch(lockBraveTroops()),
     // doSomeThing:(arg1,arg2) => (dispatch) => {
     //   ...
     //   dispatch(action);
@@ -34,4 +32,4 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps)
-)(ToolbarComponent);
+)(LayoutPage);

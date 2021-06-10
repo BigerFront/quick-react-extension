@@ -49,6 +49,7 @@ function getSubModName() {
 function parseModSubPath() {
   const CMD_MOD_ARGV_NAME = '--mod-path';
   const CMD_MOD_ARGV_SHORT_NAME = '-m';
+
   let modPath = '';
   let modSubPath = false;
   let modName = '';
@@ -156,6 +157,50 @@ function modPathRuleComments() {
   return ruleComments;
 }
 
+function getModCoreName() {
+  const CMD_MOD_CORE_NAME = '--mod-corename';
+  const CMD_MOD_CORE_SHORT_NAME = '-n';
+  const CRS_ENV_KEY = 'MOD_CORE_NAME';
+  let corename = '';
+  let hasInputArgv = false;
+  let avalibleCMD = '';
+
+  let _tmp = '';
+
+  let idx = originalArgvs.findIndex((arg) => arg === CMD_MOD_CORE_SHORT_NAME);
+
+  if (idx > 0 && idx < originalArgvs.length - 1) {
+    hasInputArgv = true;
+    _tmp = originalArgvs[idx + 1];
+    avalibleCMD = `command line args [${CMD_MOD_CORE_SHORT_NAME}] `;
+  }
+
+  idx = originalArgvs.findIndex((arg) => arg === CMD_MOD_CORE_NAME);
+  if (idx > 0 && idx < originalArgvs.length - 1) {
+    hasInputArgv = true;
+    _tmp = originalArgvs[idx + 1];
+    avalibleCMD = `command line args [${CMD_MOD_CORE_NAME}] `;
+  }
+
+  if (process.env[CRS_ENV_KEY]) {
+    hasInputArgv = true;
+    _tmp = process.env[CRS_ENV_KEY];
+    avalibleCMD = `cross-env parameter [${CRS_ENV_KEY}] `;
+  }
+
+  if (hasInputArgv && !new RegExp(MOD_NAME_REGEX).test(_tmp)) {
+    let errMsg =
+      chalk.redBright('❌ ' + avalibleCMD + 'no value or format incorrect.\n') +
+      chalk.hex(CMD_COLOR_HEX)(
+        `you should entry like: module-a, moda,m-a9 ...`
+      );
+    throw new Error(errMsg);
+  } else {
+    corename = _tmp;
+    return corename;
+  }
+}
+
 function getConfiguration() {
   return new Promise((resolve, reject) => {
     try {
@@ -169,6 +214,7 @@ function getConfiguration() {
         notPage: originalArgvs.includes('--notPage'),
         noComments: originalArgvs.includes('--noComments'),
         subModName: getSubModName(),
+        corename: getModCoreName(), // --mod-corename -n or MOD_CORENAME
         subpath: false,
         ...parseModArgv,
       };

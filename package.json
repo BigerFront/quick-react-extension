@@ -1,6 +1,6 @@
 {
   "name": "quick-extension-boilerplate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "an Extension boilerplate with React &amp; Redux &amp; webpack5",
   "main": "index.js",
   "author": "lanbery",
@@ -37,7 +37,8 @@
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-immutable": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.2",

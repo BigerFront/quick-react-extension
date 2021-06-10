@@ -1,0 +1,143 @@
+/**
+ * This file is used to define the MenuPage style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './main-menu/main-menu.scss';
+*/
+$more-menu-color: #fff;
+$more-menu-background-color: rgba(0, 0, 0, 1);
+
+.brave-main {
+  &__more-dropdown--wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  button.brave-btn-more {
+    padding: 0px;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.brave-moremenus {
+  color: $more-menu-color;
+  background: $more-menu-background-color;
+  box-shadow: rgb(0 0 0 / 15%) 0 1px 2px 2px;
+
+  &__header {
+    width: 100%;
+    min-width: 225px;
+    display: flex;
+    flex: 1 1 100%;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem 4px;
+    box-shadow: none;
+  }
+
+  button.ant-btn-ghost {
+    color: $more-menu-color;
+    border-radius: 4px;
+  }
+
+  &__list {
+    color: $more-menu-color;
+    background-color: $more-menu-background-color;
+    border-right: 0;
+  }
+
+  &-item {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    vertical-align: middle;
+
+    span {
+      font-size: 1rem;
+    }
+    .anticon[role='img']:not(.ant-menu-item-selected) {
+      font-size: 1rem;
+      color: #fff;
+    }
+  }
+
+  &-item:hover {
+    background-color: rgba($white, 0.15);
+
+    .brave-icon {
+      color: rgba($primary-color, 1);
+      font-size: 1.05rem;
+      transform: rotate(45deg);
+    }
+
+    .brave-spin {
+      .brave-icon {
+        -webkit-animation: brave-rotate 800ms infinite linear;
+        -moz-animation: brave-rotate 800ms infinite linear;
+        -o-animation: brave-rotate 800ms infinite linear;
+        animation: brave-rotate 800ms infinite linear;
+      }
+    }
+  }
+}
+
+.ant-menu:not(.ant-menu-horizontal) {
+  > .brave-moremenus-item {
+    &.ant-menu-item-selected {
+      background-color: rgba($white, 0.2);
+
+      .brave-icon {
+        color: rgba($primary-color, 1);
+        font-size: 1.2rem;
+        transform: rotate(45deg);
+      }
+    }
+
+    &.ant-menu-item-selected {
+      .brave-spin {
+        .brave-icon {
+          -webkit-animation: brave-rotate 800ms infinite linear;
+          -moz-animation: brave-rotate 800ms infinite linear;
+          -o-animation: brave-rotate 800ms infinite linear;
+          animation: brave-rotate 800ms infinite linear;
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes brave-rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes brave-rotate {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-o-keyframes brave-rotate {
+  from {
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(360deg);
+  }
+}
+@keyframes brave-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -6,12 +6,14 @@ export const APP_LOCK = 'app/lock';
 export const APP_UNLOCK = 'app/unlock';
 
 /** Brave troops */
-export const LOCK_BRAVE_TROOPS = 'brave/locked';
-export const UNLOCK_BRAVE_TROOPS = 'brave/unlock';
 
+export const UNLOCK_BRAVE_TROOPS = 'brave/unlock';
+export const SET_BRAVE_LOCKED = 'brave/locked';
 export const UNLOCK_IN_PROGRESS = 'brave/unlock_in_progress';
 export const UNLOCK_FAILED = 'skin@unlock_failed';
 export const UNLOCK_SUCCESS = 'brave/unlock_success';
+
+export const UPD_BRAVE_BLOCKED = 'skin@blocked';
 
 /** INIT */
 export const UPD_BRAVE_STATE = 'brave/update_all';

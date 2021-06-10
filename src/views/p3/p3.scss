@@ -1,12 +1,11 @@
 /* Layout Style */
-@import './routes/setup-routes/setup-layout.scss';
-@import './routes/home-routes/home-layout.scss';
+@import './first-setup/index.scss';
+@import './home/index.scss';
+@import './page-layout/index.scss';
 
 @import './signin/signin.scss';
 @import './error/error.scss';
-@import './home/home.scss';
 
-@import './first-setup/index.scss';
 @import './unlock/unlock-pagge.scss';
 
 /* Popup Global CSS will override sub modules Style */

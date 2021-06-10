@@ -51,4 +51,6 @@ module.exports = {
   '@alert-error-border-color': '#fcebea',
   '@alert-error-bg-color': '#fcebea',
   '@layout-header-height': '40px',
+  '@layout-header-padding': '0 12px',
+  '@layout-footer-padding': '0 12px',
 };

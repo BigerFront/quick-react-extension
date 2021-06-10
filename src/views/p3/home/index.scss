@@ -1,0 +1,25 @@
+/**
+ * Home layout root 
+ * home layout variables can defined here
+ */
+$brave-avatar-size: 80;
+$brave-head-title-height: 50;
+$brave-avatar-diff-h: 6;
+$brave-avatar-slogan-height: 30;
+
+$brave-banner-height: $brave-avatar-size + $brave-head-title-height +
+  $brave-avatar-slogan-height;
+$brave-banner-up-height: $brave-head-title-height + $brave-avatar-size/2 +
+  $brave-avatar-diff-h;
+
+$brave-banner-background: rgb(222, 225, 230);
+$brave-banner-bg-pos1: calc-precent(
+  $brave-banner-up-height,
+  $brave-banner-height
+);
+$brave-banner-color: $primary-color;
+$brave-banner-second-color: rgba(220, 20, 60, 0.65);
+$brave-bg-white: rgba(255, 255, 255, 1);
+
+@import './layout/home-layout.scss';
+@import './home.scss';

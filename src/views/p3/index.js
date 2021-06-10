@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { hot } from 'react-hot-loader';
 
 import { HashRouter as Router } from 'react-router-dom';
+// import { Router } from 'react-router-dom';
 import Routes from './routes';
 import { history } from '../../Popup/index';
 import logger, { isDevMode } from '~Lib/log';

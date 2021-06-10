@@ -6,14 +6,24 @@ import logger from '~Lib/log';
 
 import HomeLayout from './home-layout';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   const { braveState = {} } = state;
 
   const { isUnlocked, isInitialized } = braveState;
 
-  logger.debug('home map inject>>isUnlocked>>>>', isUnlocked, isInitialized);
+  const {
+    match: { path },
+  } = ownProps;
+
+  logger.debug(
+    'home map inject>>isUnlocked>>>>',
+    isUnlocked,
+    isInitialized,
+    ownProps
+  );
 
   return {
+    rootpath: path,
     isUnlocked,
     isInitialized,
   };
