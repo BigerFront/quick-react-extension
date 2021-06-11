@@ -1,0 +1,12 @@
+/**
+ * This file is used to define the SelectorPage style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './address-selector/address-selector.scss';
+*/
+.selector-page {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}

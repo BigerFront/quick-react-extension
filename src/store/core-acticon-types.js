@@ -13,6 +13,8 @@ export const UNLOCK_IN_PROGRESS = 'brave/unlock_in_progress';
 export const UNLOCK_FAILED = 'skin@unlock_failed';
 export const UNLOCK_SUCCESS = 'brave/unlock_success';
 
+export const SET_CURRENT_CHAIN_ID = 'brave/network/set_chainid';
+
 export const UPD_BRAVE_BLOCKED = 'skin@blocked';
 
 /** INIT */

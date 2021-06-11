@@ -1,0 +1,40 @@
+/**
+ * This file is used to define the SelectorPage style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './network-selector/network-selector.scss';
+*/
+.network-selector {
+  &__box {
+    width: 100%;
+    span.anticon.network-icon {
+      display: flex;
+      align-items: center;
+    }
+    div.ant-select-selector {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-flow: row nowrap;
+      color: $brave-banner-second-color;
+
+      span.network-name {
+        flex: 1 1 auto;
+      }
+    }
+
+    span.ant-select-selection-item {
+      width: 100%;
+      display: flex;
+    }
+  }
+
+  &__option {
+    div.ant-select-item-option-content {
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

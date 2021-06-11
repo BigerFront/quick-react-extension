@@ -11,11 +11,12 @@ import {
   SafetyIcon,
   IncreaseIcon,
   MailIcon,
+  SwitchIcon,
+  NetIcon,
 } from '~Widgets/svgicons';
 
-
-
 import { compressAddress } from '~/helpers/text-utils';
+import NetworkSelector from '~P3/selectors/network-selector';
 
 import logoSrc from '~Assets/images/brave-blue.png';
 import unlockSrc from '~Assets/images/brave-troops.png';
@@ -24,6 +25,7 @@ import lockSrc from '~Assets/images/brave-gloden-big.png';
 export default class HomeBanner extends PureComponent {
   state = {
     selectedAddress: '',
+    network: 'mainnet',
   };
 
   slogan = 'protects your asset safety';
@@ -58,8 +60,9 @@ export default class HomeBanner extends PureComponent {
           />
         </div>
         <div className="home-banner__network--wrapper">
-          <span>Ropsten</span>
-          <NetworkIcon shape="circle" className="network-icon" />
+          <NetworkSelector />
+          {/* <span className="network-name">{this.state.network}</span>
+          <NetIcon className="network-icon" type={this.state.network} /> */}
         </div>
       </div>
     );
@@ -85,7 +88,9 @@ export default class HomeBanner extends PureComponent {
       <div className="home-banner__selected">
         <span className="address">{compressAddress(selectedAddress)}</span>
 
-        <ExchageIcon className="address-switch-icon" />
+        <SwitchIcon className="address-switch-icon" />
+
+        {/* <ExchageIcon className="address-switch-icon" /> */}
       </div>
     );
   }
@@ -141,7 +146,6 @@ export default class HomeBanner extends PureComponent {
         <div className="home-banner__assets--container">
           {isUnlocked ? this.renderAssetsContainer() : null}
         </div>
-       
       </>
     );
   }

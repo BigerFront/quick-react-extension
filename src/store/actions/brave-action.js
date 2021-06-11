@@ -3,6 +3,7 @@ import {
   UNLOCK_IN_PROGRESS,
   UNLOCK_FAILED,
   UNLOCK_SUCCESS,
+  SET_CURRENT_CHAIN_ID,
 } from '../core-acticon-types';
 
 import logger from '~Lib/log';
@@ -31,6 +32,13 @@ export function unlockFailed(message) {
 export function unlockSuccessed() {
   return {
     type: UNLOCK_SUCCESS,
+  };
+}
+
+export function setCurrentChainId(currentChainId) {
+  return {
+    type: SET_CURRENT_CHAIN_ID,
+    payload: { currentChainId },
   };
 }
 

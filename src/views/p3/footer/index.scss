@@ -109,36 +109,4 @@ $brave-foot-logo-size: 40px;
 
 @import './toggle-menu/brave-menu.scss';
 
-@-webkit-keyframes brave-rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
 
-@-moz-keyframes brave-rotate {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
-}
-@-o-keyframes brave-rotate {
-  from {
-    -o-transform: rotate(0deg);
-  }
-  to {
-    -o-transform: rotate(360deg);
-  }
-}
-@keyframes brave-rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

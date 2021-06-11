@@ -4,6 +4,7 @@ import {
   UPD_BRAVE_STATE,
   SETUP_COMPLETED,
   SET_BRAVE_ACC_ENABLE,
+  SET_CURRENT_CHAIN_ID,
 } from '../../core-acticon-types';
 
 /**
@@ -45,6 +46,12 @@ export default function reduceBraveTroops(state = {}, { type, payload = {} }) {
         isInitialized: true,
         isUnlocked: true,
       };
+    case SET_CURRENT_CHAIN_ID: {
+      return {
+        ...braveState,
+        ...payload,
+      };
+    }
     default:
       return braveState;
   }
