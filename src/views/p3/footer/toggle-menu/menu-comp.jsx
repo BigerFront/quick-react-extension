@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
 import { Dropdown, Menu, Button, Space } from 'antd';
-import { MoreOutlined, SettingOutlined, HomeOutlined } from '@ant-design/icons';
+import { MoreOutlined, SettingOutlined, LockOutlined } from '@ant-design/icons';
 
 import logger from '~Lib/log';
+
+import { comboNestedRoutes } from '~Lib/utils/route-helper';
+import { HOME_LAYOUT_TYPE, PAGE_LAYOUT_TYPE } from '../constants';
 
 import {
   ContactIcon,
@@ -12,6 +15,7 @@ import {
   SolidityIcon,
 } from '~Widgets/svgicons';
 import {
+  PAGE_ROOT_NESTED,
   DEFAULT_ROUTE,
   CONTACTS_ROOT_NESTED,
   ASSETS_ROOT_NESTED,
@@ -36,15 +40,14 @@ export default class MenuComponent extends Component {
       case DEFAULT_ROUTE:
         this.defaultSelectedKeys = [CONTACTS_ROOT_NESTED];
         break;
-      case CONTACTS_ROOT_NESTED:
-      case ASSETS_ROOT_NESTED:
-      case TRANSACTION_ROOT_NESTED:
-      case SMART_CONTRACTS_ROOT_NESTED:
-        this.defaultSelectedKeys = [pathname];
-
-        break;
+      // case CONTACTS_ROOT_NESTED:
+      // case ASSETS_ROOT_NESTED:
+      // case TRANSACTION_ROOT_NESTED:
+      // case comboNestedRoutes(PAGE_ROOT_NESTED, SMART_CONTRACTS_ROOT_NESTED):
+      //   this.defaultSelectedKeys = [pathname];
+      //   break;
       default: {
-        this.defaultSelectedKeys = [];
+        this.defaultSelectedKeys = [pathname];
       }
     }
     if (pathname === DEFAULT_ROUTE) {
@@ -53,11 +56,19 @@ export default class MenuComponent extends Component {
       this.defaultSelectedKeys = [pathname];
     }
 
-    logger.debug(
-      '>>>>>>>>this.defaultSelectedKeys>>>>>>>',
-      this.defaultSelectedKeys
-    );
+    // logger.debug(
+    //   '>>>>>>>>this.defaultSelectedKeys>>>>>>>',
+    //   this.defaultSelectedKeys
+    // );
   }
+
+  lockedHandler = () => {
+    const { lockBravTroops } = this.props;
+
+    lockBravTroops().then(() => {
+      logger.debug('>>>>>>> Locked success>>>>>');
+    });
+  };
 
   onVisibleChange = (visible) => {
     this.setState({ moreVisible: visible });
@@ -73,30 +84,39 @@ export default class MenuComponent extends Component {
     this.setState({ moreVisible: false });
   };
 
-  menuheader = () => {
+  renderDynamicHeaderBtns = () => {
+    const { layoutType } = this.props;
+
+    const showLockedBtn = layoutType !== HOME_LAYOUT_TYPE;
+    logger.debug('>>>>>layoutType>>>>>>>>', layoutType, showLockedBtn);
     return (
-      <div className="brave-dropdown__header">
-        <Space>
-          <Button type="ghost" size="small" icon={<SettingOutlined />}>
-            Settings
-          </Button>
+      <>
+        {showLockedBtn ? (
           <Button
             type="ghost"
             size="small"
-            icon={<HomeOutlined />}
-            onClick={this.goHomeHandle}
+            icon={<LockOutlined />}
+            onClick={this.lockedHandler}
           >
-            Home
+            Lock
           </Button>
-        </Space>
-      </div>
+        ) : null}
+      </>
     );
   };
 
   menus = () => {
     return (
       <>
-        {this.menuheader()}
+        <div className="brave-dropdown__header">
+          <Space>
+            <Button type="ghost" size="small" icon={<SettingOutlined />}>
+              Settings
+            </Button>
+            {this.renderDynamicHeaderBtns()}
+          </Space>
+        </div>
+
         <Menu
           selectable={true}
           onSelect={this.onSelectHandler}
@@ -104,6 +124,7 @@ export default class MenuComponent extends Component {
           className="brave-dropdown__list"
         >
           <Menu.Divider style={{ margin: '2px 4px' }} />
+
           <Menu.Item
             key={CONTACTS_ROOT_NESTED}
             className="brave-dropdown--item"
@@ -128,7 +149,10 @@ export default class MenuComponent extends Component {
           </Menu.Item>
           <Menu.Divider style={{ margin: '2px 4px' }} />
           <Menu.Item
-            key={SMART_CONTRACTS_ROOT_NESTED}
+            key={comboNestedRoutes(
+              PAGE_ROOT_NESTED,
+              SMART_CONTRACTS_ROOT_NESTED
+            )}
             className="brave-dropdown--item"
             icon={<SolidityIcon spin />}
           >

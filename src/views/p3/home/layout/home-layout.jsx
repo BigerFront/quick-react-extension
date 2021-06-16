@@ -27,6 +27,8 @@ import {
   SMART_CONTRACTS_ROOT_NESTED,
 } from '../../routes/routes-consts';
 
+import { HOME_LAYOUT_TYPE, PAGE_LAYOUT_TYPE } from '../../footer/constants';
+
 const { Content, Footer } = Layout;
 
 export default class HomeLayout extends PureComponent {
@@ -40,11 +42,11 @@ export default class HomeLayout extends PureComponent {
 
     if (history) {
       this.unlisten = history.listen((locationObj, action) => {
-        logger.debug(
-          'Home Layout>>>>>>History listen>>>>>>>',
-          this.props,
-          locationObj
-        );
+        // logger.debug(
+        //   'Home Layout>>>>>>History listen>>>>>>>',
+        //   this.props,
+        //   locationObj
+        // );
       });
     }
   }
@@ -101,7 +103,9 @@ export default class HomeLayout extends PureComponent {
         <Divider className="brave-divider" />
         <Content className="home-layout__main">{this.renderRoutes()}</Content>
         <Footer className="home-layout__footer">
-          {isUnlocked ? <HomeFootToolbar /> : null}
+          {isUnlocked ? (
+            <HomeFootToolbar layoutType={HOME_LAYOUT_TYPE} />
+          ) : null}
         </Footer>
       </Layout>
     );

@@ -2,13 +2,23 @@ import React, { Component } from 'react';
 
 import { Avatar, Space, Button } from 'antd';
 
-import { RollbackOutlined, LockOutlined } from '@ant-design/icons';
+import {
+  RollbackOutlined,
+  HomeOutlined,
+  LockOutlined,
+} from '@ant-design/icons';
 
 import BraveToggleMenu from '../toggle-menu';
 import logger from '~Lib/log';
 
 import logoSrc from '~Assets/images/brave-blue.png';
 import { BRAVE_AVATAR_SIZE } from '../foot-constants';
+
+import { HOME_LAYOUT_TYPE, PAGE_LAYOUT_TYPE } from '../constants';
+import {
+  DEFAULT_ROUTE,
+  CONTACTS_ROOT_NESTED,
+} from '../../routes/routes-consts';
 
 export default class ToolbarComponent extends Component {
   state = {};
@@ -28,6 +38,11 @@ export default class ToolbarComponent extends Component {
     logger.debug('>>>>>>> Locked history>>>>>', history, a);
   };
 
+  gohomeHandler = () => {
+    const { history } = this.props;
+    history.push(DEFAULT_ROUTE);
+  };
+
   renderLogo() {
     return (
       <div className="brave-foot-logo">
@@ -41,32 +56,74 @@ export default class ToolbarComponent extends Component {
     );
   }
 
+  renderToolbarBtns(layoutType) {
+    const { location } = this.props;
+
+    const isHomeIndex =
+      location.pathname === DEFAULT_ROUTE ||
+      location.pathname === CONTACTS_ROOT_NESTED;
+    switch (layoutType) {
+      case HOME_LAYOUT_TYPE: {
+        return (
+          <Button
+            type="text"
+            shape="circle"
+            icon={<LockOutlined />}
+            size="small"
+            onClick={this.lockedHandler}
+          ></Button>
+        );
+      }
+      case PAGE_LAYOUT_TYPE: {
+        return (
+          <>
+            <Button
+              type="text"
+              shape="circle"
+              icon={<RollbackOutlined />}
+              size="small"
+              onClick={this.gobackHandler}
+            ></Button>
+            {isHomeIndex ? null : (
+              <Button
+                type="text"
+                shape="circle"
+                icon={<HomeOutlined />}
+                size="small"
+                onClick={this.gohomeHandler}
+              ></Button>
+            )}
+          </>
+        );
+      }
+      default: {
+        return (
+          <Button
+            type="text"
+            shape="circle"
+            icon={<LockOutlined />}
+            size="small"
+            onClick={this.lockedHandler}
+          ></Button>
+        );
+      }
+    }
+  }
+
   renderStatusInfo() {
     return (
       <div className="brave-foot__status">
-        <span>hhhh</span>
+        <span></span>
       </div>
     );
   }
 
   renderButtonGroup() {
+    const { layoutType = HOME_LAYOUT_TYPE } = this.props;
     return (
       <Space size={0} className="brave-foot-btn--group">
-        {/* <Button
-          type="text"
-          shape="circle"
-          icon={<RollbackOutlined />}
-          size="small"
-          onClick={this.gobackHandler}
-        ></Button> */}
-        <Button
-          type="text"
-          shape="circle"
-          icon={<LockOutlined />}
-          size="small"
-          onClick={this.lockedHandler}
-        ></Button>
-        <BraveToggleMenu />
+        {this.renderToolbarBtns(layoutType)}
+        <BraveToggleMenu showHome layoutType={layoutType} />
       </Space>
     );
   }

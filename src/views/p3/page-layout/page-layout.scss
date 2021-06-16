@@ -20,6 +20,20 @@
     }
   }
 
+  &__content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: $p3-layout-padding;
+
+    > div {
+      height: 100%;
+      flex: 1 1 100%;
+    }
+  }
+
   &__footer {
     width: 100%;
     display: flex;
@@ -40,5 +54,3 @@
     }
   }
 }
-
-@import './more-menu/more-menu.scss';
