@@ -2,6 +2,7 @@
 @import './first-setup/index.scss';
 @import './home/index.scss';
 @import './page-layout/index.scss';
+@import './header/index.scss';
 @import './footer/index.scss';
 
 @import './selectors//network-selector/network-selector.scss';
@@ -10,6 +11,8 @@
 @import './error/error.scss';
 
 @import './unlock/unlock-pagge.scss';
+
+@import './address/list-view/address-list.scss';
 
 /* Popup Global CSS will override sub modules Style */
 

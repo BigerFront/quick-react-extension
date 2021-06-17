@@ -82,3 +82,10 @@ select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #000;
 }
+
+.address-breaker {
+  word-break: break-all;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba($color: #000, $alpha: 0.8);
+}

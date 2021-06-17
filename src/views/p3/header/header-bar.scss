@@ -1,0 +1,40 @@
+header.brave-header {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+
+  //   justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  padding: 0px;
+}
+
+.brave-header {
+  &__title--wrapper {
+    flex: 1 0 auto;
+    text-align: center;
+    justify-self: center;
+
+    span.anticon[role='img'] {
+      // vertical-align: middle;
+      // align-items: center
+      font-size: 1.075rem;
+    }
+
+    .header-title {
+      @include H5;
+      font-weight: 500;
+      padding-left: 8px;
+    }
+  }
+
+  &__btns {
+    padding: 0 6px;
+    justify-self: flex-end;
+    span.anticon[role='img'] {
+      // vertical-align: middle;
+      // align-items: center
+      font-size: 1.15rem;
+    }
+  }
+}

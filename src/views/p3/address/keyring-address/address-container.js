@@ -1,12 +1,12 @@
 import { compose } from 'redux';import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import ListPage from './list-comp.jsx';
+import AddressPage from './address-comp.jsx';
 
 /**
  *
- * @module: list 
- * @Created: lanbery 21-06-11 10:10 Friday
+ * @module: keyring-address 
+ * @Created: lanbery 21-06-16 13:33 Wednesday
  * make state inject into react dom props
  *
  */
@@ -30,4 +30,4 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps)
-)(ListPage);
+)(AddressPage);

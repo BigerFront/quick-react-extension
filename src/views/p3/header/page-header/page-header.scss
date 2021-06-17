@@ -1,9 +1,9 @@
 /**
- * This file is used to define the ListPage style.
+ * This file is used to define the HeaderPage style.
  * This file must be imported into parent scss file, to take it effect.
- * like : @import './list/address-list.scss';
+ * like : @import './page-header/page-header.scss';
 */
-.address-list-page {
+.header-page {
   &__wrapper {
     width: 100%;
     display: flex;

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { Layout, Button } from 'antd';
+import { Layout } from 'antd';
 
 import AuthRoute from '~P3/auth';
 
@@ -11,27 +11,20 @@ import { comboNestedRoutes } from '~Lib/utils/route-helper';
 
 import { PAGE_LAYOUT_TYPE } from '../footer/constants';
 
+import Error404 from '~P3/error/not-found';
 import SmartContractList from '~P3/contracts/smart-contract';
+import AddressList from '~P3/address/list-view';
 import PageToolbar from '../footer/comm-toolbar';
 
-import { SMART_CONTRACTS_ROOT_NESTED } from '~P3/routes/routes-consts';
+import {
+  SMART_CONTRACTS_ROOT_NESTED,
+  ADDRESS_LIST_NESTED,
+} from '~P3/routes/routes-consts';
 
-const { Header, Content, Footer } = Layout;
+const { Footer } = Layout;
 
 export default class LayoutPage extends PureComponent {
   state = {};
-
-  renderHeader() {
-    return (
-      <>
-        <div className="navicon-box">
-          <ContactIcon />
-        </div>
-        <h3 className="nav-label">main-layout Header</h3>
-      </>
-    );
-  }
-
   renderMainRoutes() {
     const { match } = this.props;
     const { path } = match;
@@ -39,11 +32,17 @@ export default class LayoutPage extends PureComponent {
     return (
       <Switch>
         <AuthRoute
+          path={comboNestedRoutes(path, ADDRESS_LIST_NESTED)}
+          component={AddressList}
+          exact
+        />
+        <AuthRoute
           path={comboNestedRoutes(path, SMART_CONTRACTS_ROOT_NESTED)}
           component={SmartContractList}
         />
+        <AuthRoute path={path} component={AddressList} exact />
 
-        <AuthRoute path={path} component={SmartContractList} exact />
+        <Route component={Error404} />
       </Switch>
     );
   }
@@ -54,14 +53,11 @@ export default class LayoutPage extends PureComponent {
   }
 
   render() {
-    // const { xxx } = this.props;
-
     return (
       <Layout className="brave-main">
-        <Header className="brave-main__header">{this.renderHeader()}</Header>
-        <Content className="brave-main__content">
+        <Layout className="brave-main__content">
           {this.renderMainRoutes()}
-        </Content>
+        </Layout>
         <Footer className="brave-main__footer">{this.renderFooter()}</Footer>
       </Layout>
     );

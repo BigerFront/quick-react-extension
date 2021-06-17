@@ -1,0 +1,16 @@
+/**
+ * This file is used to define the ViewPage style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './list-view/address-list.scss';
+*/
+.address-list {
+  &-item {
+    &__actions {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      flex-flow: column nowrap;
+    }
+  }
+}

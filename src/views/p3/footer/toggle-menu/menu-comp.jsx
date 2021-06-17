@@ -6,13 +6,15 @@ import { MoreOutlined, SettingOutlined, LockOutlined } from '@ant-design/icons';
 import logger from '~Lib/log';
 
 import { comboNestedRoutes } from '~Lib/utils/route-helper';
-import { HOME_LAYOUT_TYPE, PAGE_LAYOUT_TYPE } from '../constants';
+import { HOME_LAYOUT_TYPE } from '../constants';
 
 import {
   ContactIcon,
   AssetsIcon,
   TransactionIcon,
   SolidityIcon,
+  CoinIcon,
+  KeyIcon,
 } from '~Widgets/svgicons';
 import {
   PAGE_ROOT_NESTED,
@@ -20,6 +22,7 @@ import {
   CONTACTS_ROOT_NESTED,
   ASSETS_ROOT_NESTED,
   TRANSACTION_ROOT_NESTED,
+  ADDRESS_LIST_NESTED,
   SMART_CONTRACTS_ROOT_NESTED,
 } from '~P3/routes/routes-consts';
 
@@ -136,7 +139,7 @@ export default class MenuComponent extends Component {
           <Menu.Item
             key={ASSETS_ROOT_NESTED}
             className="brave-dropdown--item"
-            icon={<AssetsIcon />}
+            icon={<CoinIcon type="fill" />}
           >
             Digital Assets
           </Menu.Item>
@@ -148,6 +151,13 @@ export default class MenuComponent extends Component {
             Transactions
           </Menu.Item>
           <Menu.Divider style={{ margin: '2px 4px' }} />
+          <Menu.Item
+            key={comboNestedRoutes(PAGE_ROOT_NESTED, ADDRESS_LIST_NESTED)}
+            className="brave-dropdown--item"
+            icon={<KeyIcon />}
+          >
+            Addresses
+          </Menu.Item>
           <Menu.Item
             key={comboNestedRoutes(
               PAGE_ROOT_NESTED,
@@ -164,8 +174,6 @@ export default class MenuComponent extends Component {
   };
 
   render() {
-    // const { xxx } = this.props;
-
     return (
       <>
         <Dropdown

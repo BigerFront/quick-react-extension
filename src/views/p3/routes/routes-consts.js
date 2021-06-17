@@ -52,3 +52,6 @@ export const TRANSACTION_ROOT_NESTED = '/transactions';
 
 /**Smart contracts */
 export const SMART_CONTRACTS_ROOT_NESTED = '/smart';
+
+export const ADDRESS_ROOT_NESTED = '/address';
+export const ADDRESS_LIST_NESTED = `${ADDRESS_ROOT_NESTED}/list`;

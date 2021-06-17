@@ -285,10 +285,10 @@ function createContainer(viewModPath, params) {
   // mapState
   const TPL_MAP_STATE =
     'const mapStateToProps = (state) => {\n' +
-    '  const { braveState } = state; // global state contains braveState,skinState ... ed.\n' +
+    '  const { braveState:{isUnlocked} } = state; // global state contains braveState,skinState ... ed.\n' +
     '\n' +
     '  return {\n' +
-    '    ...braveState,\n' +
+    '    isUnlocked,\n' +
     '  };\n' +
     '};\n';
 
