@@ -20,3 +20,4 @@ Dockerfile*
 .history
 tsconfig.json
 jsconfig.json
+src/shared/js

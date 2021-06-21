@@ -5,6 +5,12 @@
 
   &__main {
     background-color: $brave-bg-white;
+
+    > div {
+      max-height: 190px;
+      padding: 0 6px;
+      overflow-y: auto;
+    }
   }
 
   &__footer {

@@ -34,7 +34,7 @@ const plugins = [
     'import',
     {
       libraryName: '@ant-design/icons',
-      // libraryDirectory: 'lib/icons',
+      // libraryDirectory: 'es/icons',
       camel2DashComponentName: false,
       customName: function (transformedMethodName) {
         // console.log('Antd Icons>>>>>>', transformedMethodName);

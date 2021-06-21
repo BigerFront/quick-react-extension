@@ -1,16 +1,22 @@
+/* eslint-disable jsx-a11y/aria-role */
 import React, { PureComponent } from 'react';
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { compressAddress } from '~/helpers/text-utils';
 import { Tooltip } from 'antd';
 
 export default class LabelPage extends PureComponent {
   state = {
     addressText: '',
     copiedTips: '',
+    dataTips: '',
     visible: false,
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { cliped } = this.props;
+    if (cliped) this.setState({ dataTips: 'click copy clipboard' });
+  }
 
   onVisibleChange = (visible) => {
     this.setState({ visible: visible });
@@ -49,15 +55,20 @@ export default class LabelPage extends PureComponent {
   };
 
   renderHasClipboard() {
-    const { address } = this.props;
+    const { address, compressed } = this.props;
     return (
       <CopyToClipboard text={address} onCopy={this.onCopyHandler}>
-        <span
-          className="address-breaker"
-          style={{ cursor: 'copy', wordBreak: 'break-all' }}
-        >
-          {address}
-        </span>
+        <div className="address-label__wrapper">
+          <div
+            className="address-breaker"
+            role="brave"
+            style={{ cursor: 'copy', wordBreak: 'break-all' }}
+          >
+            {compressed ? compressAddress(address) : address}
+
+            <span className="address-tiper">click copy to clipboard.</span>
+          </div>
+        </div>
       </CopyToClipboard>
     );
   }

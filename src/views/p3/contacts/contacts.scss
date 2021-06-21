@@ -3,10 +3,29 @@
  * This file must be imported into parent scss file, to take it effect.
  * like : @import './contacts/contacts.scss';
 */
-.contacts-page {
-  &__wrapper {
+.contact {
+  &-page {
     width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
+    flex: 1 1 100%;
+
+  }
+
+  &-list {
+    &-item__desc--wrapper {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    &-item {
+      span.nick-name {
+        font-size: 1.05rem;
+      }
+
+      span.contact-mail {
+        color: $primary-color;
+      }
+    }
   }
 }

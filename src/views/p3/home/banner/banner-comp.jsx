@@ -22,6 +22,8 @@ import logoSrc from '~Assets/images/brave-blue.png';
 import unlockSrc from '~Assets/images/brave-troops.png';
 import lockSrc from '~Assets/images/brave-gloden-big.png';
 
+import BraveIcon from '~Widgets/brave-icon/icon-font';
+
 export default class HomeBanner extends PureComponent {
   state = {
     selectedAddress: '',
@@ -102,7 +104,11 @@ export default class HomeBanner extends PureComponent {
       <>
         <div className="asset-box">
           <p>
-            <BtcIcon className="asset-icon" />
+            <BraveIcon
+              type="brave-btc"
+              className="asset-icon"
+              style={{ color: 'rgb(254, 205, 87)' }}
+            />
           </p>
           <div>
             <span className="asset-balance">1.2456</span>
@@ -110,7 +116,11 @@ export default class HomeBanner extends PureComponent {
         </div>
         <div className="asset-box">
           <p>
-            <DogeIcon className="asset-icon main" />
+            <BraveIcon
+              type="brave-dot-fill"
+              className="asset-icon main"
+              style={{ fontSize: '1.85rem' }}
+            />
           </p>
           <div>
             <span className="asset-balance">320019.23</span>
@@ -118,7 +128,11 @@ export default class HomeBanner extends PureComponent {
         </div>
         <div className="asset-box">
           <p>
-            <EthIcon className="asset-icon" />
+            <BraveIcon
+              type="brave-eth"
+              className="asset-icon"
+              style={{ color: '#0f4e8c' }}
+            />
           </p>
           <div>
             <span className="asset-balance">25.5678</span>

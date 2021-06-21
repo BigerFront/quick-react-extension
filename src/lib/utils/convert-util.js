@@ -25,3 +25,5 @@ export function getRandomUint8Array(len) {
   window.crypto.getRandomValues(a);
   return a;
 }
+
+

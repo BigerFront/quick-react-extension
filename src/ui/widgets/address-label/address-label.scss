@@ -3,10 +3,59 @@
  * This file must be imported into parent scss file, to take it effect.
  * like : @import './address-label/address-label.scss';
 */
-.label-page {
-  &__wrapper {
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
+$brave-tip-bgcolor: rgba(#000, 0.75);
+
+.address-breaker {
+  word-break: break-all;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba($color: #000, $alpha: 0.8);
+  text-align: left;
+  justify-content: left;
+  align-items: flex-start;
+
+  &[role='brave'] {
+    position: relative;
+    display: inline-block;
+    outline: none;
+
+    span.address-tiper {
+      background-color: $brave-tip-bgcolor;
+      visibility: hidden;
+      opacity: 0;
+      color: #fff;
+      width: 120px;
+      text-align: center;
+      border-radius: 6px;
+      padding: 2px 0;
+      position: absolute;
+      z-index: 1;
+      top: 0px;
+      left: 110%;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent $brave-tip-bgcolor transparent transparent;
+      }
+    }
+  }
+
+  &[role='brave']:hover {
+    span.address-tiper {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  &[role='brave']:focus {
+    span.address-tiper {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 }

@@ -80,6 +80,15 @@ const copyPlugins = [
       },
     ],
   }),
+  new CopyWebpackPlugin({
+    patterns: [
+      {
+        from: R(src, 'shared'),
+        to: R(dist, targetBrowser, 'shared'),
+        force: true,
+      },
+    ],
+  }),
 ];
 
 const htmlPlugins = [
