@@ -21,5 +21,7 @@ $brave-banner-color: $primary-color;
 $brave-banner-second-color: rgba(220, 20, 60, 0.65);
 $brave-bg-white: rgba(255, 255, 255, 1);
 
+$brave-home-padding: 0 6px;
+
 @import './layout/home-layout.scss';
 @import './home.scss';

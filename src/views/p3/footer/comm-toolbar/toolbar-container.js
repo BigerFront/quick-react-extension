@@ -14,10 +14,16 @@ import ToolbarComponent from './toolbar-comp.jsx';
  *
  */
 const mapStateToProps = (state) => {
-  const { braveState } = state; // global state contains braveState,skinState ... ed.
+  const {
+    braveState,
+    skinState: { foot },
+  } = state; // global state contains braveState,skinState ... ed.
   const { isUnlocked } = braveState;
+  const { footLabel = '', footStatus = '' } = foot;
   return {
     isUnlocked,
+    footLabel,
+    footStatus,
   };
 };
 

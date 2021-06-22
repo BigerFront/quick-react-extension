@@ -1,0 +1,12 @@
+.home-nav {
+  &__wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: $brave-home-padding;
+
+    > span:not(:first-child) {
+      padding-left: 6px;
+    }
+  }
+}

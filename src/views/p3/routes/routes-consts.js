@@ -55,3 +55,6 @@ export const SMART_CONTRACTS_ROOT_NESTED = '/smart';
 
 export const ADDRESS_ROOT_NESTED = '/address';
 export const ADDRESS_LIST_NESTED = `${ADDRESS_ROOT_NESTED}/list`;
+
+/**Profile */
+export const PROFILE_ROOT_NESTED = '/profile';

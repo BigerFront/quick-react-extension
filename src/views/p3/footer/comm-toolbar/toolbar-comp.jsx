@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { Avatar, Space, Button } from 'antd';
+import { FormattedMessage } from 'react-intl';
 
 import {
   RollbackOutlined,
@@ -111,9 +112,19 @@ export default class ToolbarComponent extends Component {
   }
 
   renderStatusInfo() {
-    return (
+    const { footStatus, footLabel } = this.props;
+    return footStatus ? (
       <div className="brave-foot__status">
-        <span></span>
+        <span>{footStatus}</span>
+      </div>
+    ) : (
+      <div className="brave-foot__label">
+        {/* <FormattedMessage
+          defaultMessage="{footLabel}"
+          values={{ footLabel }}
+          description="The toggle Menu Name"
+        /> */}
+        <span>{footLabel}</span>
       </div>
     );
   }

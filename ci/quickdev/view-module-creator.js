@@ -264,7 +264,7 @@ function createContainer(viewModPath, params) {
   const { compName, compFileName, containerFileName } = view;
 
   const TPL_IMPORT =
-    "import { compose } from 'redux';" +
+    "import { compose } from 'redux';\n" +
     `import { connect } from 'react-redux';\n` +
     `import { withRouter } from 'react-router-dom';\n` +
     '\n' +

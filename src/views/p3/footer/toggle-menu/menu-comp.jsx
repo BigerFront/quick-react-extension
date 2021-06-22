@@ -5,26 +5,11 @@ import { MoreOutlined, SettingOutlined, LockOutlined } from '@ant-design/icons';
 
 import logger from '~Lib/log';
 
-import { comboNestedRoutes } from '~Lib/utils/route-helper';
 import { HOME_LAYOUT_TYPE } from '../constants';
 
-import {
-  ContactIcon,
-  AssetsIcon,
-  TransactionIcon,
-  SolidityIcon,
-  CoinIcon,
-  KeyIcon,
-} from '~Widgets/svgicons';
-import {
-  PAGE_ROOT_NESTED,
-  DEFAULT_ROUTE,
-  CONTACTS_ROOT_NESTED,
-  ASSETS_ROOT_NESTED,
-  TRANSACTION_ROOT_NESTED,
-  ADDRESS_LIST_NESTED,
-  SMART_CONTRACTS_ROOT_NESTED,
-} from '~P3/routes/routes-consts';
+import { menuItems } from '~P3/routes/brave-menus';
+
+import { DEFAULT_ROUTE, CONTACTS_ROOT_NESTED } from '~P3/routes/routes-consts';
 
 export default class MenuComponent extends Component {
   state = {
@@ -43,12 +28,6 @@ export default class MenuComponent extends Component {
       case DEFAULT_ROUTE:
         this.defaultSelectedKeys = [CONTACTS_ROOT_NESTED];
         break;
-      // case CONTACTS_ROOT_NESTED:
-      // case ASSETS_ROOT_NESTED:
-      // case TRANSACTION_ROOT_NESTED:
-      // case comboNestedRoutes(PAGE_ROOT_NESTED, SMART_CONTRACTS_ROOT_NESTED):
-      //   this.defaultSelectedKeys = [pathname];
-      //   break;
       default: {
         this.defaultSelectedKeys = [pathname];
       }
@@ -58,18 +37,13 @@ export default class MenuComponent extends Component {
     } else {
       this.defaultSelectedKeys = [pathname];
     }
-
-    // logger.debug(
-    //   '>>>>>>>>this.defaultSelectedKeys>>>>>>>',
-    //   this.defaultSelectedKeys
-    // );
   }
 
   lockedHandler = () => {
     const { lockBravTroops } = this.props;
 
     lockBravTroops().then(() => {
-      logger.debug('>>>>>>> Locked success>>>>>');
+      // logger.debug('>>>>>>> Locked success>>>>>');
     });
   };
 
@@ -91,7 +65,7 @@ export default class MenuComponent extends Component {
     const { layoutType } = this.props;
 
     const showLockedBtn = layoutType !== HOME_LAYOUT_TYPE;
-    logger.debug('>>>>>layoutType>>>>>>>>', layoutType, showLockedBtn);
+    // logger.debug('>>>>>layoutType>>>>>>>>', layoutType, showLockedBtn);
     return (
       <>
         {showLockedBtn ? (
@@ -108,7 +82,7 @@ export default class MenuComponent extends Component {
     );
   };
 
-  menus = () => {
+  overlayMenus = () => {
     return (
       <>
         <div className="brave-dropdown__header">
@@ -119,7 +93,6 @@ export default class MenuComponent extends Component {
             {this.renderDynamicHeaderBtns()}
           </Space>
         </div>
-
         <Menu
           selectable={true}
           onSelect={this.onSelectHandler}
@@ -127,47 +100,37 @@ export default class MenuComponent extends Component {
           className="brave-dropdown__list"
         >
           <Menu.Divider style={{ margin: '2px 4px' }} />
+          {menuItems
+            .filter((it) => !it.hide)
+            .map((it, idx) => {
+              const {
+                divider,
+                key,
+                name,
+                className,
+                iconProps = {},
+                icon,
+              } = it;
 
-          <Menu.Item
-            key={CONTACTS_ROOT_NESTED}
-            className="brave-dropdown--item"
-            icon={<ContactIcon />}
-          >
-            Contacts
-          </Menu.Item>
-
-          <Menu.Item
-            key={ASSETS_ROOT_NESTED}
-            className="brave-dropdown--item"
-            icon={<CoinIcon type="fill" />}
-          >
-            Digital Assets
-          </Menu.Item>
-          <Menu.Item
-            key={TRANSACTION_ROOT_NESTED}
-            className="brave-dropdown--item"
-            icon={<TransactionIcon spin />}
-          >
-            Transactions
-          </Menu.Item>
-          <Menu.Divider style={{ margin: '2px 4px' }} />
-          <Menu.Item
-            key={comboNestedRoutes(PAGE_ROOT_NESTED, ADDRESS_LIST_NESTED)}
-            className="brave-dropdown--item"
-            icon={<KeyIcon />}
-          >
-            Addresses
-          </Menu.Item>
-          <Menu.Item
-            key={comboNestedRoutes(
-              PAGE_ROOT_NESTED,
-              SMART_CONTRACTS_ROOT_NESTED
-            )}
-            className="brave-dropdown--item"
-            icon={<SolidityIcon spin />}
-          >
-            Smart Contracts
-          </Menu.Item>
+              if (divider) {
+                return <Menu.Divider style={{ margin: '2px 4px' }} key={idx} />;
+              } else {
+                const MenuIcon = icon;
+                return icon ? (
+                  <Menu.Item
+                    key={key}
+                    className={className}
+                    icon={<MenuIcon {...iconProps} />}
+                  >
+                    {name}
+                  </Menu.Item>
+                ) : (
+                  <Menu.Item key={key} className={className}>
+                    {name}
+                  </Menu.Item>
+                );
+              }
+            })}
         </Menu>
       </>
     );
@@ -177,7 +140,7 @@ export default class MenuComponent extends Component {
     return (
       <>
         <Dropdown
-          overlay={this.menus()}
+          overlay={this.overlayMenus()}
           visible={this.state.moreVisible}
           trigger={['click', 'hover']}
           onVisibleChange={this.onVisibleChange}

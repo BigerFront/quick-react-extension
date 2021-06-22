@@ -1,29 +1,36 @@
 import React, { PureComponent } from 'react';
 
-export default class TransactionsPage extends PureComponent {
-  state = {};
+import { List } from 'antd';
 
-  renderHeader() {
-    return <div className="transactions-page__header"> transactions Header</div>;
+import TxListItem from './tx-item';
+
+export default class TransactionsPage extends PureComponent {
+  state = {
+    list: [],
+  };
+
+  componentDidMount() {
+    const { txList } = this.props;
+    this.setState({ list: txList || [] });
   }
+
+  renderItem = (item) => <TxListItem {...item} />;
 
   renderContent() {
-    return <div className="transactions-page__main">transactions Content</div>;
-  }
-
-  renderFooter() {
-    return <div className="transactions-page__footer">transactions Footer</div>;
+    return (
+      <List
+        className="tx-list"
+        itemLayout="horizontal"
+        dataSource={this.state.list}
+        gutter={4}
+        renderItem={this.renderItem}
+      ></List>
+    );
   }
 
   render() {
     // const { xxx } = this.props;
 
-    return (
-      <div className="transactions-page">
-        {this.renderHeader()}
-        {this.renderContent()}
-        {this.renderFooter()}
-      </div>
-    );
+    return <div className="transactions-page">{this.renderContent()}</div>;
   }
 }

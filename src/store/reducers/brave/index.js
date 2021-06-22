@@ -5,6 +5,7 @@ import {
   SETUP_COMPLETED,
   SET_BRAVE_ACC_ENABLE,
   SET_CURRENT_CHAIN_ID,
+  SET_CURRENT_LOCALE,
 } from '../../core-acticon-types';
 
 /**
@@ -16,6 +17,7 @@ import {
  */
 export default function reduceBraveTroops(state = {}, { type, payload = {} }) {
   const braveState = {
+    currentLocale: '',
     completedOfSetup: false,
     isUnlocked: false,
     isInitialized: false,
@@ -23,8 +25,12 @@ export default function reduceBraveTroops(state = {}, { type, payload = {} }) {
   };
 
   switch (type) {
-    case UPD_BRAVE_STATE:
-      return { ...braveState, ...payload };
+    case SET_CURRENT_LOCALE: {
+      return {
+        ...braveState,
+        currentLocale: payload.currentLocale,
+      };
+    }
     case SETUP_COMPLETED:
       return {
         ...braveState,
@@ -56,3 +62,5 @@ export default function reduceBraveTroops(state = {}, { type, payload = {} }) {
       return braveState;
   }
 }
+
+export const getCurrentLocale = (state) => state.braveState.currentLocale;

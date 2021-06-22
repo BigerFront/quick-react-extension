@@ -20,7 +20,6 @@ export default class SelectorPage extends PureComponent {
 
   onSelectHandler = (v) => {
     const { networkSelected } = this.props;
-    logger.debug('>>>>>>>>>>>>>>>>>>>', v);
     networkSelected(v);
   };
 
@@ -30,7 +29,6 @@ export default class SelectorPage extends PureComponent {
     const currentType = NETWORK_KEY_MAP[currentChainId]
       ? NETWORK_KEY_MAP[currentChainId].name
       : '';
-    logger.debug('>>>>>>>>>>>>', networks, currentChainId);
 
     return (
       <Select

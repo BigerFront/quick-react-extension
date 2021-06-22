@@ -9,8 +9,43 @@ $brave-foot-logo-size: 40px;
 
 .brave-foot {
   &__status {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: center;
     flex: 1 1 auto;
     text-align: center;
+    overflow: hidden;
+
+    span {
+      max-width: 100%;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__label {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1 1 auto;
+    text-align: left;
+    overflow: hidden;
+
+    span {
+      max-width: calc(100% - 10px);
+      display: inline-block;
+      vertical-align: middle;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+      padding-left: 0.35rem;
+      font-size: 1rem;
+      color: rgba($primary-color, 1);
+    }
   }
 
   &-btn--group {
@@ -108,5 +143,3 @@ $brave-foot-logo-size: 40px;
 @import './mod-toolbar/brave-toolbar.scss';
 
 @import './toggle-menu/brave-menu.scss';
-
-

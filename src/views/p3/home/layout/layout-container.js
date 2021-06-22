@@ -15,12 +15,12 @@ const mapStateToProps = (state, ownProps) => {
     match: { path },
   } = ownProps;
 
-  logger.debug(
-    'home map inject>>isUnlocked>>>>',
-    isUnlocked,
-    isInitialized,
-    ownProps
-  );
+  // logger.debug(
+  //   'home map inject>>isUnlocked>>>>',
+  //   isUnlocked,
+  //   isInitialized,
+  //   ownProps
+  // );
 
   return {
     rootpath: path,

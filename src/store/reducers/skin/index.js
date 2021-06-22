@@ -3,6 +3,7 @@ import {
   UI_OPEN_SIDEBAR,
   UI_CLOSE_SIDEBAR,
   UNLOCK_FAILED,
+  UI_SET_FOOT_LABEL,
 } from '../../core-acticon-types';
 
 export default function reduceSkin(state = {}, { type, payload = {} }) {
@@ -11,11 +12,22 @@ export default function reduceSkin(state = {}, { type, payload = {} }) {
     sidebar: {
       isOpen: false,
     },
-    demoTitle: 'Demo Show',
+    foot: {
+      footLabel: ' ',
+      footStatus: '',
+    },
     ...state,
   };
 
   switch (type) {
+    case UI_SET_FOOT_LABEL: {
+      const { foot } = skinState;
+      foot.footLabel = payload.footLabel;
+      return {
+        ...skinState,
+        foot,
+      };
+    }
     case UPD_BRAVE_BLOCKED: {
       const { uiBlocked } = payload;
       return {

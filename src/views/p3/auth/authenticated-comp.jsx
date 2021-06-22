@@ -7,7 +7,6 @@ import logger from '~Lib/log';
 export default function Authenticated(props) {
   const { isUnlocked, completedOfSetup, history, path } = props;
 
-  logger.debug('Auth>>>>>>>>>>>>>>>>>>>>>>>', path);
   switch (true) {
     case isUnlocked:
       return <Route {...props} />;

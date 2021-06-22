@@ -57,7 +57,33 @@ const plugins = [
   //   },
   //   'antd-mobile',
   // ],
+
+  // [
+  //   'react-intl-auto',
+  //   {
+  //     // 移除的前缀：true - ID 中将不包含任何文件路径前缀
+  //     removePrefix: 'src.',
+  //     //使用文件名生成 ID
+  //     filebase: false,
+  //     // 使用前导注释作为消息说明
+  //     // 仅适用于使用 defineMessages 定义语言包的时候
+  //     extractComments: true,
+  //     useKey: true,
+  //     // ID 中单词之间的分隔符
+  //     separator: '.',
+  //   },
+  // ],
+  [
+    'formatjs',
+    {
+      idInterpolationPattern: '[sha512:contenthash:base64:6]',
+      ast: true,
+    },
+  ],
   'react-hot-loader/babel',
 ];
 
-module.exports = { presets, plugins };
+module.exports = function (api) {
+  api.cache(true);
+  return { presets, plugins };
+};

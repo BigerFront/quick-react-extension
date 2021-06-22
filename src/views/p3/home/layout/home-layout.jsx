@@ -27,7 +27,8 @@ import {
   SMART_CONTRACTS_ROOT_NESTED,
 } from '../../routes/routes-consts';
 
-import { HOME_LAYOUT_TYPE, PAGE_LAYOUT_TYPE } from '../../footer/constants';
+import { HOME_LAYOUT_TYPE } from '../../footer/constants';
+import HomeNavLabel from '../content-label';
 
 const { Content, Footer } = Layout;
 
@@ -100,7 +101,8 @@ export default class HomeLayout extends PureComponent {
         <div className="home-layout__banner--wrapper">
           {this.renderHeader()}
         </div>
-        <Divider className="brave-divider" />
+        <HomeNavLabel />
+        <Divider className="brave-divider" style={{ marginTop: '0' }} />
         <Content className="home-layout__main">{this.renderRoutes()}</Content>
         <Footer className="home-layout__footer">
           {isUnlocked ? (

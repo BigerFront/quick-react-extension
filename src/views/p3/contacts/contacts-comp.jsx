@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { List, Skeleton, Avatar } from 'antd';
 import randomColor from 'randomcolor';
-import InfiniteScroll from 'react-infinite-scroller';
 
 import { getContacts } from './mock-contacts';
 
@@ -24,11 +23,6 @@ export default class ContactsPage extends PureComponent {
       c.bgcolor = colors[i];
       return c;
     });
-    logger.debug(
-      'componentDidMount>>>>>>>>>>>>>>>>>>>>>',
-      contacts,
-      getColorOpts(contacts.length)
-    );
     this.setState({ list: contacts });
   }
 

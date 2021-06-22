@@ -15,10 +15,12 @@ import Error404 from '~P3/error/not-found';
 import SmartContractList from '~P3/contracts/smart-contract';
 import AddressList from '~P3/address/list-view';
 import PageToolbar from '../footer/comm-toolbar';
+import ProfilePage from '../profile';
 
 import {
   SMART_CONTRACTS_ROOT_NESTED,
   ADDRESS_LIST_NESTED,
+  PROFILE_ROOT_NESTED,
 } from '~P3/routes/routes-consts';
 
 const { Footer } = Layout;
@@ -39,6 +41,10 @@ export default class LayoutPage extends PureComponent {
         <AuthRoute
           path={comboNestedRoutes(path, SMART_CONTRACTS_ROOT_NESTED)}
           component={SmartContractList}
+        />
+        <AuthRoute
+          path={comboNestedRoutes(path, PROFILE_ROOT_NESTED)}
+          component={ProfilePage}
         />
         <AuthRoute path={path} component={AddressList} exact />
 

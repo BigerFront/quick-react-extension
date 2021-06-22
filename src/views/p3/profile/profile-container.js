@@ -1,21 +1,20 @@
-import { compose } from 'redux';
-import { connect } from 'react-redux';
+import { compose } from 'redux';import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import LayoutPage from './page-layout.jsx';
+import ProfilePage from './profile-comp.jsx';
 
 /**
  *
- * @module: main-layout
- * @Created: lanbery 21-06-09 15:19 Wednesday
+ * @module: profile 
+ * @Created: lanbery 21-06-22 08:41 Tuesday
  * make state inject into react dom props
  *
  */
-const mapStateToProps = (state, ownProps) => {
-  const { braveState } = state; // global state contains braveState,skinState ... ed.
+const mapStateToProps = (state) => {
+  const { braveState:{isUnlocked} } = state; // global state contains braveState,skinState ... ed.
 
   return {
-    ...braveState,
+    isUnlocked,
   };
 };
 
@@ -31,4 +30,4 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps)
-)(LayoutPage);
+)(ProfilePage);

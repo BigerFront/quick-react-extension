@@ -34,10 +34,6 @@ export default class HomeBanner extends PureComponent {
 
   UNSAFE_componentWillMount() {
     const { isUnlocked, history } = this.props;
-    console.log(
-      '>>>>>UNSAFE_componentWillMount>>>>>>isUnlocked>>>',
-      isUnlocked
-    );
   }
 
   renderTitleContainer(appTitle) {
@@ -98,8 +94,6 @@ export default class HomeBanner extends PureComponent {
   }
 
   renderAssetsContainer() {
-    const { mainAssets } = this.props;
-
     return (
       <>
         <div className="asset-box">

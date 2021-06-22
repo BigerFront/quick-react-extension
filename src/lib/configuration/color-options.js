@@ -6,6 +6,7 @@ export const DARK_OPTIONS = {
 export const LIGHT_OPTIONS = {
   luminosity: 'light',
   format: 'rgba',
+  alpha: 0.6,
 };
 
 /**
