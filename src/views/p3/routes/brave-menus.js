@@ -9,6 +9,7 @@ import {
 } from '~Widgets/svgicons';
 
 import {
+  DEFAULT_ROUTE,
   PAGE_ROOT_NESTED,
   CONTACTS_ROOT_NESTED,
   ASSETS_ROOT_NESTED,
@@ -68,6 +69,8 @@ export const menuItems = [
 
 export function getMenuName(key) {
   if (typeof key !== 'string') return key;
+  if (key === DEFAULT_ROUTE)
+    return menuItems.find((it) => it.key === CONTACTS_ROOT_NESTED);
   const finded = menuItems.find((it) => it.key === key);
 
   return finded ? finded : { name: key };
