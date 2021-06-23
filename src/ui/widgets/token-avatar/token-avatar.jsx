@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Avatar } from 'antd';
 
-import { checkBraveIconType } from '../brave-icon/brave-icon-types';
+import { checkSymbolFontId } from '../brave-icon/token-icon-types';
 import BraveIcon from '../brave-icon';
 
 export default function TokenAvatar(props) {
@@ -12,7 +12,7 @@ export default function TokenAvatar(props) {
     address,
     iconType,
     alt,
-    gap,
+    gap = 2,
     icon,
     shape,
     size,
@@ -21,8 +21,8 @@ export default function TokenAvatar(props) {
     onClick,
     color,
   } = props;
-  const _key = iconType || symbol.toLowerCase()||'';
-  const tokenType = checkBraveIconType(_key);
+  const _key = iconType || symbol.toLowerCase() || '';
+  const _iconType = checkSymbolFontId(_key);
   const avatarProps = { alt, gap, icon, shape, size, src };
 
   const onClickHandler = () => {
@@ -43,8 +43,8 @@ export default function TokenAvatar(props) {
       {...avatarProps}
       style={{ cursor: cursor }}
     >
-      {tokenType ? (
-        <BraveIcon type={tokenType} style={{ color: color }} />
+      {_iconType ? (
+        <BraveIcon type={_iconType} style={{ color: color }} />
       ) : (
         <span style={{ color: color }}>{symbol}</span>
       )}

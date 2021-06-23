@@ -1,16 +1,16 @@
 import React, { PureComponent } from 'react';
-import { List, Skeleton } from 'antd';
+import { List, Skeleton, Button } from 'antd';
 
-import BraveIcon from '~Widgets/brave-icon';
 import TokenAvatar from '~/ui/widgets/token-avatar';
 import AddressLabel from '~Widgets/address-label';
+import { ListOperateIcon } from '~Widgets/svgicons/operation-icon';
 
 export default class ListPage extends PureComponent {
   state = {
     initLoading: false,
     list: [],
     avatarSize: 28,
-    gapSize: 4,
+    gapSize: 1,
     iconColor: 'rgb(15, 78, 140)',
   };
 
@@ -19,16 +19,16 @@ export default class ListPage extends PureComponent {
   };
 
   renderTokenDesc = (item) => {
-    const { address = '0x101aDdC5e5E4749A8BB4cb40c71f467663B05eBa' } = item;
+    const { address } = item;
     return (
       <div className="token-list-item__desc">
-        <AddressLabel cliped address={address} />
+        <AddressLabel cliped address={address} compressed />
       </div>
     );
   };
 
   renderTitle = (item) => {
-    const { balance = '1245.33', symbol } = item;
+    const { balance = 0, symbol } = item;
     return (
       <div className="token-list-item__title">
         <span className="token-symbol">{symbol}</span>
@@ -37,11 +37,27 @@ export default class ListPage extends PureComponent {
     );
   };
 
+  renderExtraActions = (item) => {
+    const delActionHandler = () => {
+      console.log('Del>>>>>>>>>>', item);
+    };
+    return (
+      <div className="token-list-item__actions">
+        <Button
+          type="link"
+          icon={<ListOperateIcon type="del" />}
+          onClick={delActionHandler}
+        />
+      </div>
+    );
+  };
+
   renderItem = (item) => {
     const { avatarSize, gapSize, iconColor } = this.state;
-    const { symbol, address = '', id } = item;
+    const { symbol, address = '', id, iconType, color } = item;
+    console.log('>>>>>>tokenType>>>>>>', iconType);
     return (
-      <List.Item>
+      <List.Item actions={[this.renderExtraActions(item)]}>
         <Skeleton avatar title={false} loading={item.loading} active>
           <List.Item.Meta
             avatar={
@@ -51,7 +67,8 @@ export default class ListPage extends PureComponent {
                 gap={gapSize}
                 address={address}
                 symbol={symbol}
-                color={iconColor}
+                color={color || iconColor}
+                iconType={iconType}
                 onClick={this.tokenClickHandler}
               />
             }

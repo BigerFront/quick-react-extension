@@ -1,6 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const chalk = require('chalk');
+const { capitalize } = require('lodash');
 
 const { R } = require('../paths');
 const npmArgv = process.env.npm_config_argv;
@@ -38,15 +39,20 @@ function successMsg(config) {
 }
 
 function writeOutFile(contentObj, config) {
-  const { oriFile, outFile, outVariablesName } = config;
+  const { oriFile, outFile, outVariablesName, outFuncName } = config;
   fs.ensureFileSync(outFile);
   let TPL =
-    `/* Pickup from ${oriFile} */\n` +
+    `/* eslint-disable */\n/* Pickup from ${oriFile} */\n` +
     `export const ${outVariablesName} = ` +
     JSON.stringify(contentObj) +
     ';\n';
+  let FUNC_TPL =
+    `export const check${outFuncName}Id = (id) => {\n` +
+    "  let _key = id.startsWith('brave-') ? id : `brave-${id.toLowerCase()}`;" +
+    `  return ${outVariablesName}.find((i) => i === _key);\n` +
+    '};\n';
 
-  fs.outputFileSync(outFile, TPL, { encoding: 'utf-8' });
+  fs.outputFileSync(outFile, TPL + FUNC_TPL, { encoding: 'utf-8' });
 
   return outFile;
 }
@@ -60,6 +66,7 @@ function parseArgvFromCmd() {
     filePath: '',
     fileName: '',
     outVariablesName: '',
+    outFuncName: '',
     outFile: '',
   };
 
@@ -92,7 +99,7 @@ function parseArgvFromCmd() {
   config.oriFile = _file;
   config.filePath = R(_file);
   config.outVariablesName = transVaribleName(name);
-
+  config.outFuncName = transFuncName(name);
   config.outFile = R(dir, `${name}-consts.js`);
 
   let oidx = originalArgvs.findIndex((argv) => argv === ARGV_OUT_FILE_KEY);
@@ -122,6 +129,10 @@ function transVaribleName(name) {
     .map((n) => n.toUpperCase())
     .concat(['IDS'])
     .join('_');
+}
+function transFuncName(name) {
+  let ns = name.split(/(\-|\_)/).filter((it) => it !== '-' && it !== '_');
+  return ns.map((n) => capitalize(n)).join('');
 }
 function validInFile(filePath) {
   if (!fs.existsSync(filePath)) {

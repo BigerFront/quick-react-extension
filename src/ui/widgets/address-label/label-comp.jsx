@@ -74,8 +74,12 @@ export default class LabelPage extends PureComponent {
   }
 
   render() {
-    const { cliped } = this.props;
+    const { cliped, address } = this.props;
 
-    return cliped ? this.renderHasClipboard() : this.renderNoClipboard();
+    return address
+      ? cliped
+        ? this.renderHasClipboard()
+        : this.renderNoClipboard()
+      : null;
   }
 }
