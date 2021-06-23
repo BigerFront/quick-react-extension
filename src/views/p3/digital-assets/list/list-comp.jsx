@@ -1,18 +1,13 @@
 import React, { PureComponent } from 'react';
+import BraveIcon from '~Widgets/brave-icon';
 
 export default class ListPage extends PureComponent {
-  state = {};
-
-  renderHeader() {
-    return <div className="list-page__header"> list Header</div>;
-  }
+  state = {
+    list: [],
+  };
 
   renderContent() {
     return <div className="list-page__main">list Content</div>;
-  }
-
-  renderFooter() {
-    return <div className="list-page__footer">list Footer</div>;
   }
 
   render() {
@@ -20,9 +15,9 @@ export default class ListPage extends PureComponent {
 
     return (
       <div className="list-page">
-        {this.renderHeader()}
-        {this.renderContent()}
-        {this.renderFooter()}
+        <BraveIcon type="brave-eth" />
+        <BraveIcon type="brave-btc" />
+        <BraveIcon type="brave-bll" />
       </div>
     );
   }

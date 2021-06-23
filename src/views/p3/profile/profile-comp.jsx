@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
 
-import { Layout, Form, Space, Row, Col, Typography } from 'antd';
+import { Layout, Form, Space, Row, Col, Divider } from 'antd';
 import AddressHeader from '~P3/header/address-header';
 
 import { ProfileIcon } from '~Widgets/svgicons';
 import IntlSelector from '~UI/intl/lang-selector';
 
-const { Title } = Typography;
 export default class ProfilePage extends PureComponent {
   state = {};
 
@@ -25,6 +24,50 @@ export default class ProfilePage extends PureComponent {
     );
   }
 
+  renderIntlCard() {
+    return (
+      <div className="profile-page__card">
+        <div className="profile-page__card-label">
+          <label className="brave-label small">选择语言:</label>
+        </div>
+        <div className="profile-page__card-control">
+          <IntlSelector size="small" />
+        </div>
+      </div>
+    );
+  }
+
+  renderCoinCard() {
+    return (
+      <>
+        <div className="profile-page__card">
+          <div className="profile-page__card-label">
+            <label className="brave-label small">Center:</label>
+          </div>
+          <div className="profile-page__card-control">
+            <IntlSelector size="small" />
+          </div>
+        </div>
+        <div className="profile-page__card">
+          <div className="profile-page__card-label">
+            <label className="brave-label small">left:</label>
+          </div>
+          <div className="profile-page__card-control">
+            <IntlSelector size="small" />
+          </div>
+        </div>
+        <div className="profile-page__card">
+          <div className="profile-page__card-label">
+            <label className="brave-label small">right:</label>
+          </div>
+          <div className="profile-page__card-control">
+            <IntlSelector size="small" />
+          </div>
+        </div>
+      </>
+    );
+  }
+
   render() {
     // const { xxx } = this.props;
 
@@ -36,16 +79,14 @@ export default class ProfilePage extends PureComponent {
           iconOverlay={() => <ProfileIcon />}
         />
         <Layout.Content className="profile-page__main">
-          <Space></Space>
-
-          <Row>
-            <Col span={8} className="brave-label-col">
-              <label className="brave-label small">选择语言:</label>
-            </Col>
-            <Col span={16}>
-              <IntlSelector size="small" />
-            </Col>
-          </Row>
+          <Divider className="profile-page__divider" orientation="left">
+            语言
+          </Divider>
+          {this.renderIntlCard()}
+          <Divider className="profile-page__divider" orientation="left">
+            Home Coins Settings
+          </Divider>
+          {this.renderCoinCard()}
         </Layout.Content>
       </>
     );

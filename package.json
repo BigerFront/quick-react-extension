@@ -12,7 +12,8 @@
     "serve": "lite-server -c ci/bs-config.js",
     "lint": "prettier --write **/*.{js,jsx,css,html}",
     "mod:view": "cross-env SUB_ENTRY=p3 node ci/quickdev/view-module-creator.js",
-    "pickup": "extract-react-intl-messages -l=en-US,zh-CN -o src/shared/locales -d en-US"
+    "pickup": "extract-react-intl-messages -l=en-US,zh-CN -o src/shared/locales -d en-US",
+    "pick:font": "node ci/tools/pickup-svg.js"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",

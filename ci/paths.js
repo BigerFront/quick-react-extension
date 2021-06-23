@@ -7,6 +7,7 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   R,
   join,
+  parse: path.parse,
   src: path.resolve(__dirname, '../src'),
   dist: path.resolve(__dirname, '../dist'),
   distzip: path.resolve(__dirname, '../dist-zip'),

@@ -12,5 +12,30 @@
     overflow-y: auto;
   }
 
-  
+  &__divider.ant-divider-horizontal.ant-divider-with-text {
+    margin: 6px 0 12px 0px;
+
+    > span {
+      margin-bottom: -10px;
+      font-size: 0.75rem;
+    }
+  }
+
+  &__card {
+    width: 100%;
+    display: flex;
+
+    &-label {
+      flex: 0 0 80px;
+      padding: 0 6px;
+      justify-content: flex-end;
+
+      > label {
+        text-align: right;
+      }
+    }
+    &-control {
+      flex: 1 1 auto;
+    }
+  }
 }
