@@ -17,14 +17,16 @@ export const DEF_COIN_MAP = {
   [ETH_COIN_ID]: {
     id: ETH_COIN_ID,
     symbol: 'ETH',
-    icon:''
+    iconType: 'brave-eth',
   },
   [BTC_COIN_ID]: {
     id: BTC_COIN_ID,
     symbol: 'BTC',
+    iconType: 'brave-btc',
   },
   [DOT_COIN_ID]: {
     id: DOT_COIN_ID,
     symbol: 'DOT',
+    iconType: 'brave-dot',
   },
 };

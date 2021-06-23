@@ -3,7 +3,6 @@ import React, { PureComponent } from 'react';
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { compressAddress } from '~/helpers/text-utils';
-import { Tooltip } from 'antd';
 
 export default class LabelPage extends PureComponent {
   state = {
@@ -65,8 +64,9 @@ export default class LabelPage extends PureComponent {
             style={{ cursor: 'copy', wordBreak: 'break-all' }}
           >
             {compressed ? compressAddress(address) : address}
-
-            <span className="address-tiper">click copy to clipboard.</span>
+            {compressed ? (
+              <span className="address-tiper">click copy to clipboard.</span>
+            ) : null}
           </div>
         </div>
       </CopyToClipboard>

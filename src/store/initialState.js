@@ -1,3 +1,4 @@
+import tokens from '~Lib/coins';
 const initialAppState = {
   braveState: {}, // app storage sync ui state
   skinState: {}, // ui ctrl state,Do not participate in logical calculations
@@ -14,5 +15,8 @@ const initialAppState = {
     ],
   }, // notify task
 };
+
+// initial need background read
+initialAppState.braveState.tokens = tokens;
 
 export default initialAppState;

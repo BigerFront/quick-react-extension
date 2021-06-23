@@ -3,10 +3,28 @@
  * This file must be imported into parent scss file, to take it effect.
  * like : @import './list/list.scss';
 */
-.list-page {
-  &__wrapper {
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
+.token-list {
+  &-item {
+    &__title {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      > span.token-balance {
+        font-size: 1.05rem;
+        color: $primary-color;
+        &::before {
+          content: 'balance:';
+          padding-right: 4px;
+          font-size: 0.5rem;
+          color: rgba($primary-color, 0.75);
+        }
+      }
+    }
+    &__desc {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
   }
 }
