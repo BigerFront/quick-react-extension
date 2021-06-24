@@ -5,11 +5,12 @@ import { withRouter } from 'react-router-dom';
 import HomeBanner from './banner-comp';
 
 const mapStateToProps = (state) => {
-  const { braveState, skinState } = state;
+  const { braveState } = state;
   const {
     isUnlocked,
     selectedAddress = '0x02f6054FF0B2847bc3ca5b4C75646353cC99f990',
   } = braveState;
+
   const bannerState = {
     braveSlogan: 'Brave Troops Wallet protects your asset safety.',
     selectedAddress: '',

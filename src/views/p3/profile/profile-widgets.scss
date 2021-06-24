@@ -1,0 +1,19 @@
+.brave-theme {
+  &__box {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  &__select {
+    flex: 0 0 auto;
+  }
+
+  &__suffix {
+    flex: 0 0 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 4px;
+  }
+}

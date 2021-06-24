@@ -5,9 +5,9 @@ export const APP_LOCK = 'app/lock';
  */
 export const APP_UNLOCK = 'app/unlock';
 
-/** 
- * Brave troops need storage localeStorage 
- * brave/xxx/xx 
+/**
+ * Brave troops need storage localeStorage
+ * brave/xxx/xx
  **/
 
 export const UNLOCK_BRAVE_TROOPS = 'brave/unlock';
@@ -20,14 +20,14 @@ export const SET_CURRENT_LOCALE = 'brave/locale/set_current';
 
 export const SET_CURRENT_CHAIN_ID = 'brave/network/set_chainid';
 
-export const UPD_BRAVE_BLOCKED = 'skin@blocked';
-
 /** INIT */
 export const UPD_BRAVE_STATE = 'brave/update_all';
 export const SETUP_COMPLETED = 'brave/setup/completed';
 export const SET_BRAVE_ACC_ENABLE = 'brave/account/enabled';
 
 /** skin state operation */
+export const SET_BRAVE_THEME = 'skin@theme/set_brave_theme';
+
 export const UI_OPEN_SIDEBAR = 'ui/sidebar/open';
 export const UI_CLOSE_SIDEBAR = 'ui/sidebar/close';
 export const UI_SET_DEMOTITLE = 'ui/demo/set_title';

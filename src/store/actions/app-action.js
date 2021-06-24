@@ -44,7 +44,7 @@ export function unlockInProgress() {
 export function unlockFailed(message) {
   return {
     type: UNLOCK_FAILED,
-    payload: { message },
+    payload: message,
   };
 }
 

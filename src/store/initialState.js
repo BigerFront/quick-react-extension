@@ -1,7 +1,11 @@
 import tokens from '~Lib/coins';
+
+import { BLUE_LOGO_THEME } from '~UI/ui-cnst';
 const initialAppState = {
   braveState: {}, // app storage sync ui state
-  skinState: {}, // ui ctrl state,Do not participate in logical calculations
+  skinState: {
+    braveTheme: BLUE_LOGO_THEME,
+  }, // ui ctrl state,Do not participate in logical calculations
   // skinState: {}, // core state
   localeMessages: {}, // i18n state
   taskState: {

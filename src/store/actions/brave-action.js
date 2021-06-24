@@ -61,17 +61,17 @@ export function unlockByPass(password) {
   return async function tryUnlockBrave(dispatch, getSate) {
     const postData = { password };
     try {
-      const respData = await fetch(
-        'https://ron-swanson-quotes.herokuapp.com/v2/quotes'
-      );
-      logger.debug('response>>>>>>>>>>>>>>>', getSate());
+      // const respData = await fetch(
+      //   'https://ron-swanson-quotes.herokuapp.com/v2/quotes'
+      // );
+      // logger.debug('response>>>>>>>>>>>>>>>', getSate());
 
       if (password !== '1234') {
         throw new Error(`Password ${password} incorrect.`);
       }
 
       dispatch(unlockSuccessed());
-      return respData.json();
+      return postData;
     } catch (err) {
       const message = err.message;
       // logger.debug('testUnlock>>Error>>', message);

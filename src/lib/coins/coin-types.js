@@ -18,6 +18,7 @@ export const ETH_COIN_ID = 'brave_ether';
 export const BTC_COIN_ID = 'brave_bitcoin';
 export const DOT_COIN_ID = 'brave_polkdot';
 export const TETHER_COIN_ID = 'brave_tether';
+export const QEEB_COIN_ID = 'brave_qeeb';
 
 export const DEF_COIN_MAP = {
   [BTC_COIN_ID]: {
@@ -31,6 +32,12 @@ export const DEF_COIN_MAP = {
     symbol: 'USDT',
     iconType: 'brave-usdt',
     address: USDT_ERC20_M_ADDRESS,
+  },
+  [QEEB_COIN_ID]: {
+    id: QEEB_COIN_ID,
+    symbol: 'QEEB',
+    iconType: 'brave-qeeb',
+    color: 'rgb(0,0,0)',
   },
   [ETH_COIN_ID]: {
     id: ETH_COIN_ID,

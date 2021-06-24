@@ -24,6 +24,7 @@
       "~P3/*": ["src/views/p3/*"],
       "~Store/*":["src/store/*"],
       "~UI/*":["src/ui/*"],
+      "~Views/*":["src/views/*"],
       "~Widgets/*":["src/ui/widgets/*"]
     }
   },

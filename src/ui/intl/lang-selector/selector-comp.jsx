@@ -12,7 +12,12 @@ const LangSelectorComp = (props) => {
     (state) => state.braveState?.currentLocale || DEFAULT_LOCALE
   );
 
-  const { className = 'intl-selector', size } = props || {};
+  const {
+    className = 'intl-selector',
+    size,
+    minWidth,
+    maxWidth = '100%',
+  } = props || {};
 
   const locales = getLocales(DEFAULT_LOCALE);
 
@@ -29,7 +34,7 @@ const LangSelectorComp = (props) => {
       onSelect={onSelectHandle}
       size={size}
       dropdownClassName="intl-selector__dropdown"
-      style={{ minWidth: '65%' }}
+      style={{ minWidth: minWidth, maxWidth: maxWidth }}
     >
       {locales.map((lg) => (
         <Select.Option

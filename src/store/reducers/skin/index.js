@@ -1,12 +1,12 @@
 import {
-  UPD_BRAVE_BLOCKED,
+  SET_BRAVE_THEME,
   UI_OPEN_SIDEBAR,
   UI_CLOSE_SIDEBAR,
   UNLOCK_FAILED,
   UI_SET_FOOT_LABEL,
 } from '../../core-acticon-types';
 
-export default function reduceSkin(state = {}, { type, payload = {} }) {
+export default function reduceSkin(state = {}, { type, val }) {
   const skinState = {
     uiBlocked: false,
     sidebar: {
@@ -20,26 +20,25 @@ export default function reduceSkin(state = {}, { type, payload = {} }) {
   };
 
   switch (type) {
+    case SET_BRAVE_THEME: {
+      return {
+        ...skinState,
+        braveTheme: val,
+      };
+    }
     case UI_SET_FOOT_LABEL: {
       const { foot } = skinState;
-      foot.footLabel = payload.footLabel;
+      foot.footLabel = val || '';
       return {
         ...skinState,
         foot,
-      };
-    }
-    case UPD_BRAVE_BLOCKED: {
-      const { uiBlocked } = payload;
-      return {
-        ...skinState,
-        uiBlocked: Boolean(uiBlocked),
       };
     }
 
     case UNLOCK_FAILED:
       return {
         ...skinState,
-        warning: payload.message || 'Incorrect password.Try again.',
+        warning: val || 'Incorrect password.Try again.',
       };
 
     case UI_OPEN_SIDEBAR:

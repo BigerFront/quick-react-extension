@@ -1,13 +1,17 @@
 import React, { PureComponent } from 'react';
 
-import { Layout, Form, Space, Row, Col, Divider } from 'antd';
+import { Layout, Form, Divider } from 'antd';
 import AddressHeader from '~P3/header/address-header';
+import { getThemeName } from '~UI/ui-cnst';
 
 import { ProfileIcon } from '~Widgets/svgicons';
 import IntlSelector from '~UI/intl/lang-selector';
+import { BraveThemeSelectBox } from './profile-widgets';
 
 export default class ProfilePage extends PureComponent {
-  state = {};
+  state = {
+    minWidth: '70%',
+  };
 
   renderContent() {
     return (
@@ -31,7 +35,7 @@ export default class ProfilePage extends PureComponent {
           <label className="brave-label small">选择语言:</label>
         </div>
         <div className="profile-page__card-control">
-          <IntlSelector size="small" />
+          <IntlSelector size="small" minWidth={this.state.minWidth} />
         </div>
       </div>
     );
@@ -45,7 +49,7 @@ export default class ProfilePage extends PureComponent {
             <label className="brave-label small">Center:</label>
           </div>
           <div className="profile-page__card-control">
-            <IntlSelector size="small" />
+            <IntlSelector size="small" minWidth={this.state.minWidth} />
           </div>
         </div>
         <div className="profile-page__card">
@@ -53,7 +57,7 @@ export default class ProfilePage extends PureComponent {
             <label className="brave-label small">left:</label>
           </div>
           <div className="profile-page__card-control">
-            <IntlSelector size="small" />
+            <IntlSelector size="small" minWidth={this.state.minWidth} />
           </div>
         </div>
         <div className="profile-page__card">
@@ -61,7 +65,29 @@ export default class ProfilePage extends PureComponent {
             <label className="brave-label small">right:</label>
           </div>
           <div className="profile-page__card-control">
-            <IntlSelector size="small" />
+            <IntlSelector size="small" minWidth={this.state.minWidth} />
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  renderThemeCard() {
+    const { braveTheme } = this.props;
+    const name = getThemeName(braveTheme);
+    return (
+      <>
+        <div className="profile-page__card">
+          <div className="profile-page__card-label">
+            <label
+              className="brave-label small"
+              style={{ textTransform: 'capitalize' }}
+            >
+              {name}
+            </label>
+          </div>
+          <div className="profile-page__card-control">
+            <BraveThemeSelectBox size="small" minWidth={this.state.minWidth} />
           </div>
         </div>
       </>
@@ -69,8 +95,6 @@ export default class ProfilePage extends PureComponent {
   }
 
   render() {
-    // const { xxx } = this.props;
-
     return (
       <>
         <AddressHeader
@@ -83,6 +107,10 @@ export default class ProfilePage extends PureComponent {
             语言
           </Divider>
           {this.renderIntlCard()}
+          <Divider className="profile-page__divider" orientation="left">
+            Brave Theme
+          </Divider>
+          {this.renderThemeCard()}
           <Divider className="profile-page__divider" orientation="left">
             Home Coins Settings
           </Divider>

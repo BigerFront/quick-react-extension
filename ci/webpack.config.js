@@ -29,6 +29,7 @@ var alias = {
   '~Pages': join(src, 'pages'),
   '~UI': join(src, 'ui'),
   '~Widgets': join(src, 'ui/widgets'),
+  '~Views': join(src, 'views'),
   'react-dom': '@hot-loader/react-dom',
 };
 const NODE_MODE = process.env.NODE_ENV || 'development';

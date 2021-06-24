@@ -3,26 +3,17 @@ import React, { PureComponent } from 'react';
 import { Avatar } from 'antd';
 
 import {
-  EthIcon,
-  BtcIcon,
-  DogeIcon,
-  NetworkIcon,
-  ExchageIcon,
   SafetyIcon,
   IncreaseIcon,
   MailIcon,
   SwitchIcon,
-  NetIcon,
 } from '~Widgets/svgicons';
 
 import { compressAddress } from '~/helpers/text-utils';
 import NetworkSelector from '~P3/selectors/network-selector';
 
-import logoSrc from '~Assets/images/brave-blue.png';
-import unlockSrc from '~Assets/images/brave-troops.png';
-import lockSrc from '~Assets/images/brave-gloden-big.png';
-
 import BraveIcon from '~Widgets/brave-icon/icon-font';
+import BraveAvatar from '~UI/brave-avatar';
 
 export default class HomeBanner extends PureComponent {
   state = {
@@ -32,9 +23,7 @@ export default class HomeBanner extends PureComponent {
 
   slogan = 'protects your asset safety';
 
-  UNSAFE_componentWillMount() {
-    const { isUnlocked, history } = this.props;
-  }
+  UNSAFE_componentWillMount() {}
 
   renderTitleContainer(appTitle) {
     return (
@@ -50,10 +39,9 @@ export default class HomeBanner extends PureComponent {
       <div className="home-banner__logo--container-wrapper">
         <div className="left-fill"></div>
         <div className="home-banner__logo">
-          <Avatar
+          <BraveAvatar
             className="brave-avatar"
-            src={isUnlocked ? unlockSrc : lockSrc}
-            size={80}
+            size={isUnlocked ? 80 : 120}
             gap={10}
           />
         </div>
@@ -111,9 +99,9 @@ export default class HomeBanner extends PureComponent {
         <div className="asset-box">
           <p>
             <BraveIcon
-              type="brave-dot-fill"
+              type="brave-qeeb"
               className="asset-icon main"
-              style={{ fontSize: '1.85rem' }}
+              style={{ fontSize: '2.05rem', borderRadius: '1.875rem' }}
             />
           </p>
           <div>
