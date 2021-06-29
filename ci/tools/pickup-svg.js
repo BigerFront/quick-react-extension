@@ -123,7 +123,12 @@ function parseArgvFromCmd() {
 }
 
 function transVaribleName(name) {
-  let ns = name.split(/(\-|\_)/).filter((it) => it !== '-' && it !== '_');
+    let ns = name
+    .split(/(\-|\_|\.)/)
+    .filter(
+      (it) =>
+        it !== '-' && it !== '_' && it !== '.' && it.toLowerCase() !== 'min'
+    );
 
   return ns
     .map((n) => n.toUpperCase())
@@ -131,7 +136,12 @@ function transVaribleName(name) {
     .join('_');
 }
 function transFuncName(name) {
-  let ns = name.split(/(\-|\_)/).filter((it) => it !== '-' && it !== '_');
+  let ns = name
+    .split(/(\-|\_|\.)/)
+    .filter(
+      (it) =>
+        it !== '-' && it !== '_' && it !== '.' && it.toLowerCase() !== 'min'
+    );
   return ns.map((n) => capitalize(n)).join('');
 }
 function validInFile(filePath) {
