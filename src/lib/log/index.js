@@ -1,14 +1,19 @@
-/* eslint-disable no-undef */
 import * as Log from 'loglevel';
+import { levelMode } from './log-env';
 
 let LEVEL = Log.levels.WARN;
 
-export const isDevMode = __DEBUG__;
-
-if (isDevMode) {
+if (levelMode === true || levelMode.toLowerCase() === 'debug') {
   LEVEL = Log.levels.DEBUG;
+} else if (levelMode.toLowerCase() === 'info') {
+  LEVEL = Log.levels.INFO;
 }
 
 Log.setLevel(LEVEL);
+
+export const isDevMode =
+  levelMode.toLowerCase() === 'debug' ||
+  levelMode === true ||
+  levelMode.toLowerCase() === 'true';
 
 export default Log;

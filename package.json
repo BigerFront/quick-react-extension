@@ -13,7 +13,8 @@
     "lint": "prettier --write **/*.{js,jsx,css,html}",
     "mod:view": "cross-env SUB_ENTRY=p3 node ci/quickdev/view-module-creator.js",
     "pickup": "extract-react-intl-messages -l=en-US,zh-CN -o src/shared/locales -d en-US",
-    "pick:font": "node ci/tools/pickup-svg.js"
+    "pick:font": "node ci/tools/pickup-svg.js",
+    "deploy": "node ci/tools/zip-deploy"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
@@ -29,6 +30,7 @@
     "dayjs": "^1.10.4",
     "history": "^5.0.0",
     "lodash": "^4.17.21",
+    "loglevel": "^1.7.1",
     "node-sass": "^6.0.0",
     "prop-types": "^15.7.2",
     "randomcolor": "^0.6.2",
@@ -61,6 +63,7 @@
     "@types/mini-css-extract-plugin": "^1.4.3",
     "@types/node": "^15.3.0",
     "@types/react": "^17.0.5",
+    "archiver": "^5.3.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-formatjs": "^10.3.0",
@@ -101,6 +104,7 @@
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.32.13",
     "sass-loader": "^11.1.0",
+    "shelljs": "^0.8.4",
     "source-map-loader": "^2.0.1",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.2",

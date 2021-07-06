@@ -7,8 +7,12 @@
         "service_worker": "background.bundle.js"
     },
     "action": {
-        "default_popup": "popup.html",
-        "default_icon": "icons/brave_red.png"
+        "default_icon": {
+            "32": "icons/brave_32.png",
+            "128": "icons/brave_icon.png"
+        },
+        "default_title": "HHHH",
+        "default_popup": "popup.html"
     },
     "icons": {
         "128": "icons/brave_icon.png"
